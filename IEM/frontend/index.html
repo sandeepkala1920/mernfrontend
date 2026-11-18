@@ -1,0 +1,2290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>IEM Kolkata | Admission Management System 2026-27</title>
+  <meta name="description" content="IEM Kolkata - Institute of Engineering &amp; Management. Intelligent Campus &amp; Admission Management System 2026-27." />
+  
+  <!-- Google Fonts: Outfit & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- Core Stylesheet -->
+  <link rel="stylesheet" href="style.css?v=3" />
+</head>
+<body>
+
+
+
+  <!-- Glassmorphism Main Navigation Bar -->
+  <nav class="navbar" id="mainNav">
+    <div class="nav-container">
+      <div class="nav-brand" onclick="navigateTo('home')">
+        <div class="brand-logo-crest">
+          <span class="crest-letter">IEM</span>
+        </div>
+        <div class="brand-text-col">
+          <span class="brand-title">IEM <span class="accent-hub">Kolkata</span></span>
+          <span class="brand-subtitle">Institute of Engineering &amp; Management</span>
+        </div>
+      </div>
+
+      <div class="nav-links" id="navLinks">
+        <button class="nav-link-btn active" id="navLinkHome" onclick="navigateTo('home')"><i class="fa-solid fa-house"></i> Home</button>
+        <button class="nav-link-btn" id="navLinkPrograms" onclick="navigateTo('programs')"><i class="fa-solid fa-book-open"></i> Programs &amp; Fees</button>
+        <button class="nav-link-btn" id="navLinkProcess" onclick="navigateTo('process')"><i class="fa-solid fa-list-check"></i> Admission Steps</button>
+        <button class="nav-link-btn" id="navLinkStudent" onclick="navigateTo('student')"><i class="fa-solid fa-user-graduate"></i> Student Portal</button>
+        <button class="nav-link-btn" id="navLinkAdmin" onclick="navigateTo('admin')"><i class="fa-solid fa-shield-halved"></i> Admin Portal</button>
+      </div>
+
+      <div class="nav-auth-group" id="navAuthActions">
+        <!-- Injected via JavaScript based on active session -->
+      </div>
+
+      <button class="mobile-nav-toggle" id="btnMobileNavToggle" onclick="toggleMobileNav(true)" aria-label="Toggle Navigation Menu">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Slide-Out Drawer Navigation -->
+  <div id="mobileDrawerOverlay" class="mobile-drawer-overlay" onclick="toggleMobileNav(false)">
+    <div class="mobile-drawer-panel" onclick="event.stopPropagation()">
+      <div class="mobile-drawer-header">
+        <div class="nav-brand" onclick="navigateTo('home'); toggleMobileNav(false);">
+          <div class="brand-logo-crest" style="width:36px; height:36px;"><span class="crest-letter" style="font-size:0.8rem;">IEM</span></div>
+          <span class="brand-title" style="font-size:1.1rem; color:var(--white);">IEM <span class="accent-hub">Kolkata</span></span>
+        </div>
+        <button class="modal-close" style="position:static;" onclick="toggleMobileNav(false)">&times;</button>
+      </div>
+      <ul class="mobile-drawer-links">
+        <li id="mobileLinkHome"><button class="mobile-drawer-btn" onclick="navigateTo('home'); toggleMobileNav(false);"><i class="fa-solid fa-house"></i> Home</button></li>
+        <li id="mobileLinkPrograms"><button class="mobile-drawer-btn" onclick="navigateTo('programs'); toggleMobileNav(false);"><i class="fa-solid fa-book-open"></i> Programs &amp; Fees</button></li>
+        <li id="mobileLinkProcess"><button class="mobile-drawer-btn" onclick="navigateTo('process'); toggleMobileNav(false);"><i class="fa-solid fa-list-check"></i> Admission Steps</button></li>
+        <li id="mobileLinkStudent"><button class="mobile-drawer-btn" onclick="navigateTo('student'); toggleMobileNav(false);"><i class="fa-solid fa-user-graduate"></i> Student Portal</button></li>
+        <li id="mobileLinkAdmin"><button class="mobile-drawer-btn" onclick="navigateTo('admin'); toggleMobileNav(false);"><i class="fa-solid fa-shield-halved"></i> Admin Portal</button></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Notification Toast Container -->
+  <div id="toastContainer" class="toast-container"></div>
+
+  <!-- MAIN APP VIEWS CONTAINER -->
+  <main class="main-content" id="mainContent">
+
+    <!-- ==========================================================================
+         VIEW 1: ANIMATED HOMEPAGE (Futuristic SaaS Hero)
+         ========================================================================== -->
+    <section id="viewHome" class="view-section active">
+      
+      <!-- Hero Section -->
+      <div class="hero-animated-section">
+        <!-- Background floating gradient orbs & grid -->
+        <div class="hero-orbs-container">
+          <div class="floating-orb orb-1"></div>
+          <div class="floating-orb orb-2"></div>
+          <div class="floating-orb orb-3"></div>
+        </div>
+        <div class="hero-grid-pattern"></div>
+
+
+
+        <div class="hero-container">
+          <!-- Left Hero Content -->
+          <div class="hero-content">
+            <div class="hero-badge-pill">
+              <span class="pill-dot"></span> Admissions Open 2026-27 • Autonomous NIRF Top Tier
+            </div>
+            
+            <h1 class="hero-heading">
+              Smarter Campus. <br />
+              <span class="gradient-text">Seamless Administration.</span>
+            </h1>
+
+            <p class="hero-description">
+              Manage student applications, academic administration, college fees and campus communication through one intelligent platform.
+            </p>
+
+            <div class="hero-actions">
+              <button class="btn btn-primary btn-lg" id="heroBtnStudent" onclick="navigateTo('student')">
+                <i class="fa-solid fa-user-graduate"></i> Explore Student Portal
+              </button>
+              <button class="btn btn-cyan btn-lg" id="heroBtnAdmin" onclick="navigateTo('admin')">
+                <i class="fa-solid fa-shield-halved"></i> Access Admin Portal
+              </button>
+              <button class="btn btn-secondary btn-lg" onclick="navigateTo('programs')">
+                <i class="fa-solid fa-compass"></i> View Programs
+              </button>
+            </div>
+
+            <!-- Key Statistics Counter Grid -->
+            <div class="hero-stats-row">
+              <div class="hero-stat-box">
+                <span class="hero-stat-number" id="homeStatStudents">12,400+</span>
+                <span class="hero-stat-label">Active Students</span>
+              </div>
+              <div class="hero-stat-box">
+                <span class="hero-stat-number">98.4%</span>
+                <span class="hero-stat-label">Placement Record</span>
+              </div>
+              <div class="hero-stat-box">
+                <span class="hero-stat-number">72 LPA</span>
+                <span class="hero-stat-label">Highest Package</span>
+              </div>
+              <div class="hero-stat-box">
+                <span class="hero-stat-number">#1</span>
+                <span class="hero-stat-label">Autonomous College</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Hero Visual: 3D Interactive Dashboard Preview -->
+          <div class="hero-visual-col">
+            <div class="dashboard-mockup-card">
+              <div class="mockup-header">
+                <div class="mockup-window-controls">
+                  <span class="dot-red"></span>
+                  <span class="dot-yellow"></span>
+                  <span class="dot-green"></span>
+                </div>
+                <span class="mockup-badge"><i class="fa-solid fa-bolt"></i> Live Real-Time Sync</span>
+              </div>
+
+              <div class="mockup-kpi-grid">
+                <div class="mockup-kpi-card highlight">
+                  <span class="kpi-label">Applicant Status</span>
+                  <div class="kpi-val" style="font-size:1.05rem; color:var(--mint-green);"><i class="fa-solid fa-circle-check"></i> Approved</div>
+                </div>
+                <div class="mockup-kpi-card">
+                  <span class="kpi-label">Application ID</span>
+                  <div class="kpi-val" style="font-size:1.05rem; color:var(--bright-cyan);">IEM-2026-9021</div>
+                </div>
+                <div class="mockup-kpi-card">
+                  <span class="kpi-label">Allotted Degree</span>
+                  <div class="kpi-val" style="font-size:0.92rem; color:var(--white);">B.Tech AI &amp; ML</div>
+                </div>
+                <div class="mockup-kpi-card">
+                  <span class="kpi-label">Registration Fees</span>
+                  <div class="kpi-val" style="font-size:1.05rem; color:var(--white);">₹ 1,000 <span style="font-size:0.7rem; color:var(--mint-green);">PAID</span></div>
+                </div>
+              </div>
+
+              <!-- Animated Step Preview -->
+              <div class="mockup-timeline-preview">
+                <div class="mockup-timeline-header">
+                  <span>Admission Lifecycle</span>
+                  <span style="color:var(--bright-cyan);">Step 4 of 6</span>
+                </div>
+                <div class="mockup-timeline-nodes">
+                  <div class="mockup-node done"><i class="fa-solid fa-check"></i></div>
+                  <div class="mockup-line active"></div>
+                  <div class="mockup-node done"><i class="fa-solid fa-check"></i></div>
+                  <div class="mockup-line active"></div>
+                  <div class="mockup-node done"><i class="fa-solid fa-check"></i></div>
+                  <div class="mockup-line active"></div>
+                  <div class="mockup-node current"><i class="fa-solid fa-bolt"></i></div>
+                  <div class="mockup-line"></div>
+                  <div class="mockup-node upcoming">5</div>
+                  <div class="mockup-line"></div>
+                  <div class="mockup-node upcoming">6</div>
+                </div>
+              </div>
+            </div>
+
+
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Steps Overview -->
+      <div class="section-container">
+        <div class="section-header text-center">
+          <span class="section-eyebrow">Seamless &amp; Transparent</span>
+          <h2 class="section-title">6 Simple Steps to College Admission</h2>
+          <p class="section-subtitle">A fully digital, paperless workflow engineered for students, parents, and administrative officers.</p>
+        </div>
+
+        <div class="flow-grid">
+          <div class="flow-card">
+            <div class="flow-step-num">01</div>
+            <div class="flow-icon"><i class="fa-solid fa-envelope"></i></div>
+            <h3>Gmail Sign-Up</h3>
+            <p>Register securely with your valid @gmail.com address and generate your unique ID.</p>
+          </div>
+          <div class="flow-card">
+            <div class="flow-step-num">02</div>
+            <div class="flow-icon"><i class="fa-solid fa-file-signature"></i></div>
+            <h3>Guided Profile</h3>
+            <p>Enter 10th/12th academic scores, entrance exam rank (under 1 Lakh), and personal data.</p>
+          </div>
+          <div class="flow-card">
+            <div class="flow-step-num">03</div>
+            <div class="flow-icon"><i class="fa-solid fa-cloud-arrow-up"></i></div>
+            <h3>Doc Verification</h3>
+            <p>Upload clear marksheets, entrance rank card, photo and Aadhaar in the Document Studio.</p>
+          </div>
+          <div class="flow-card highlight">
+            <div class="flow-step-num">04</div>
+            <div class="flow-icon"><i class="fa-solid fa-receipt"></i></div>
+            <h3>Registration Fees</h3>
+            <p>Process the ₹1,000 registration fee with simulated UPI QR, Card, or NetBanking.</p>
+          </div>
+          <div class="flow-card">
+            <div class="flow-step-num">05</div>
+            <div class="flow-icon"><i class="fa-solid fa-user-check"></i></div>
+            <h3>Admin Approval</h3>
+            <p>Admissions Committee verifies eligibility and allocates provisional branch seat.</p>
+          </div>
+          <div class="flow-card success">
+            <div class="flow-step-num">06</div>
+            <div class="flow-icon"><i class="fa-solid fa-award"></i></div>
+            <h3>Admission Letter</h3>
+            <p>Pay provisional seat fee and instantly print your Official Provisional Admission Letter.</p>
+          </div>
+        </        </div>
+      </div>
+
+      <!-- Accreditations & Recognitions Ribbon -->
+      <div class="accreditation-ribbon-wrap">
+        <div class="accreditation-ribbon">
+          <div class="accreditation-item">
+            <i class="fa-solid fa-award"></i>
+            <span>NAAC 'A++' Grade Autonomous</span>
+          </div>
+          <div class="accreditation-divider"></div>
+          <div class="accreditation-item">
+            <i class="fa-solid fa-ranking-star"></i>
+            <span>NIRF Top Tier Institute in WB</span>
+          </div>
+          <div class="accreditation-divider"></div>
+          <div class="accreditation-item">
+            <i class="fa-solid fa-certificate"></i>
+            <span>NBA Accredited Programs</span>
+          </div>
+          <div class="accreditation-divider"></div>
+          <div class="accreditation-item">
+            <i class="fa-solid fa-building-columns"></i>
+            <span>AICTE Approved &amp; MAKAUT Affiliated</span>
+          </div>
+          <div class="accreditation-divider"></div>
+          <div class="accreditation-item">
+            <i class="fa-solid fa-briefcase"></i>
+            <span>72 LPA Highest Tech Placement</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Courses Snapshot -->
+      <div class="section-container bg-subtle">
+        <div class="section-header text-center">
+          <span class="section-eyebrow">Academic Offerings</span>
+          <h2 class="section-title">Popular Engineering &amp; Management Programs</h2>
+          <p class="section-subtitle">Explore curriculum highlights, seat intakes, and fee structures for 2026-27.</p>
+        </div>
+        <div class="programs-grid" id="homeProgramsGrid">
+          <!-- Injected dynamically via JS -->
+        </div>
+        <div class="text-center mt-6">
+          <button class="btn btn-primary btn-lg" onclick="navigateTo('programs')">
+            <i class="fa-solid fa-grid-2"></i> Explore All 8 Programs &amp; Detailed Eligibility
+          </button>
+        </div>
+      </div>
+
+      <!-- Campus Infrastructure & State-of-the-art Labs -->
+      <div class="section-container">
+        <div class="section-header text-center">
+          <span class="section-eyebrow">Excellence in Learning</span>
+          <h2 class="section-title">World-Class Infrastructure &amp; Innovation Labs</h2>
+          <p class="section-subtitle">Experience academic facilities crafted for future engineers, researchers, and global leaders.</p>
+        </div>
+
+        <div class="campus-infra-grid">
+          <div class="infra-card">
+            <div class="infra-card-icon"><i class="fa-solid fa-microchip"></i></div>
+            <h3 class="infra-card-title">Advanced AI &amp; Robotics Studio</h3>
+            <p class="infra-card-desc">Powered by NVIDIA GPU workstation clusters, autonomous robotics kits, and IoT sensor arrays for hands-on deep learning prototyping.</p>
+            <span class="infra-badge-tag"><i class="fa-solid fa-bolt"></i> 24/7 High-Perf Compute</span>
+          </div>
+
+          <div class="infra-card">
+            <div class="infra-card-icon"><i class="fa-solid fa-book-atlas"></i></div>
+            <h3 class="infra-card-title">Central Digital Library &amp; Archives</h3>
+            <p class="infra-card-desc">Over 1,20,000+ physical volumes and direct unlimited digital access to IEEE Xplore, Elsevier ScienceDirect, ACM, and Springer journals.</p>
+            <span class="infra-badge-tag"><i class="fa-solid fa-wifi"></i> Global Digital Access</span>
+          </div>
+
+          <div class="infra-card">
+            <div class="infra-card-icon"><i class="fa-solid fa-laptop-code"></i></div>
+            <h3 class="infra-card-title">Cloud &amp; Cyber Security Hub</h3>
+            <p class="infra-card-desc">Equipped with enterprise firewall simulations, virtualization testbeds, and container orchestration suites in partnership with AWS Academy.</p>
+            <span class="infra-badge-tag"><i class="fa-solid fa-shield"></i> AWS &amp; Cisco Certified</span>
+          </div>
+
+          <div class="infra-card">
+            <div class="infra-card-icon"><i class="fa-solid fa-rocket"></i></div>
+            <h3 class="infra-card-title">IEM Incubation &amp; Startup Cell</h3>
+            <p class="infra-card-desc">Active MSME-recognized incubator supporting student entrepreneurs with seed funding up to ₹25 Lakhs and dedicated patent filing legal support.</p>
+            <span class="infra-badge-tag"><i class="fa-solid fa-sack-dollar"></i> Seed Funding Support</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Placement Milestones & Industry Recruiters Banner -->
+      <div class="section-container">
+        <div class="placement-banner-section">
+          <div class="section-header text-center" style="margin-bottom: 30px;">
+            <span class="section-eyebrow" style="color:var(--mint-green);">Proven Career Milestones</span>
+            <h2 class="section-title" style="color:var(--white);">Record Campus Placements 2024-26</h2>
+            <p class="section-subtitle" style="color:#C0BCD4;">Our students lead engineering and analytics teams at Fortune 500 tech giants and innovative global unicorns.</p>
+          </div>
+
+          <div class="placement-kpi-grid">
+            <div class="placement-kpi-box">
+              <div class="placement-kpi-val">72 LPA</div>
+              <div class="placement-kpi-lbl">Highest Package</div>
+            </div>
+            <div class="placement-kpi-box">
+              <div class="placement-kpi-val">98.4%</div>
+              <div class="placement-kpi-lbl">Placement Rate</div>
+            </div>
+            <div class="placement-kpi-box">
+              <div class="placement-kpi-val">450+</div>
+              <div class="placement-kpi-lbl">Recruiting Companies</div>
+            </div>
+            <div class="placement-kpi-box">
+              <div class="placement-kpi-val">₹ 8.6 LPA</div>
+              <div class="placement-kpi-lbl">Average CTC</div>
+            </div>
+          </div>
+
+          <div class="recruiters-marquee-wrap">
+            <div class="recruiters-marquee-title"><i class="fa-solid fa-handshake"></i> Verified Campus Hiring Partners</div>
+            <div class="recruiters-badge-list">
+              <span class="recruiter-pill"><i class="fa-solid fa-code"></i> Tata Consultancy Services (TCS)</span>
+              <span class="recruiter-pill"><i class="fa-solid fa-gears"></i> Cognizant</span>
+              <span class="recruiter-pill"><i class="fa-solid fa-cubes"></i> Infosys</span>
+              <span class="recruiter-pill"><i class="fa-solid fa-network-wired"></i> Wipro</span>
+              <span class="recruiter-pill"><i class="fa-solid fa-globe"></i> Capgemini</span>
+              <span class="recruiter-pill"><i class="fa-solid fa-laptop"></i> PwC</span>
+              <span class="recruiter-pill"><i class="fa-solid fa-briefcase"></i> Deloitte</span>
+              <span class="recruiter-pill"><i class="fa-solid fa-database"></i> Oracle</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Alumni Spotlight -->
+        <div class="alumni-spotlight-grid">
+          <div class="alumni-card">
+            <div class="alumni-card-top">
+              <div class="alumni-avatar-circle">SM</div>
+              <div>
+                <div class="alumni-name">Sourav Mukherjee</div>
+                <div class="alumni-role">B.Tech CSE '24</div>
+              </div>
+              <span class="alumni-company-badge">TCS • Digital Track</span>
+            </div>
+            <p class="alumni-quote">"The rigorous algorithmic training, competitive coding labs, and mock interview sessions at IEM helped me secure a direct offer through the TCS Digital campus drive."</p>
+          </div>
+
+          <div class="alumni-card">
+            <div class="alumni-card-top">
+              <div class="alumni-avatar-circle">RS</div>
+              <div>
+                <div class="alumni-name">Riya Sengupta</div>
+                <div class="alumni-role">B.Tech AI &amp; ML '24</div>
+              </div>
+              <span class="alumni-company-badge">Deloitte • Analyst</span>
+            </div>
+            <p class="alumni-quote">"IEM provided extensive exposure to enterprise computing, system design, and communication workshops that helped me excel during the Deloitte selection process."</p>
+          </div>
+
+          <div class="alumni-card">
+            <div class="alumni-card-top">
+              <div class="alumni-avatar-circle">AB</div>
+              <div>
+                <div class="alumni-name">Arpan Banerjee</div>
+                <div class="alumni-role">B.Tech IT '23</div>
+              </div>
+              <span class="alumni-company-badge">PwC • Advisory</span>
+            </div>
+            <p class="alumni-quote">"Hands-on project work in software architecture and database engineering at IEM gave me the confidence and practical competence to clear PwC's campus rounds."</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Admission FAQ Accordion -->
+      <div class="section-container bg-subtle">
+        <div class="section-header text-center">
+          <span class="section-eyebrow">Clear Answers</span>
+          <h2 class="section-title">Frequently Asked Questions</h2>
+          <p class="section-subtitle">Got questions about admissions, exams, seat booking, or hostel accommodations? Find instant answers below.</p>
+        </div>
+
+        <div class="faq-accordion-wrap" id="homeFaqList">
+          <div class="faq-accordion-item">
+            <button class="faq-question-btn" onclick="toggleFaqAccordion(this)">
+              <span>How does the 100% digital admission process work at IEM?</span>
+              <i class="fa-solid fa-chevron-down faq-arrow-icon"></i>
+            </button>
+            <div class="faq-answer-panel">
+              <p>Applicants sign up with their valid Gmail address, complete the step-by-step digital profile, upload 10th/12th marksheets and entrance rank card, pay a ₹1,000 application fee, and receive provisional approval from the Admissions Officer desk online.</p>
+            </div>
+          </div>
+
+          <div class="faq-accordion-item">
+            <button class="faq-question-btn" onclick="toggleFaqAccordion(this)">
+              <span>What entrance exam scores are accepted for B.Tech admission?</span>
+              <i class="fa-solid fa-chevron-down faq-arrow-icon"></i>
+            </button>
+            <div class="faq-answer-panel">
+              <p>We accept valid ranks from WBJEE 2026, JEE Main 2026, and our autonomous entrance exam IEMJEE 2026. Ranks must be under 1,00,000 (1 Lakh) with PCM aggregate greater than 60%.</p>
+            </div>
+          </div>
+
+          <div class="faq-accordion-item">
+            <button class="faq-question-btn" onclick="toggleFaqAccordion(this)">
+              <span>Are merit scholarships available for high board exam scorers?</span>
+              <i class="fa-solid fa-chevron-down faq-arrow-icon"></i>
+            </button>
+            <div class="faq-answer-panel">
+              <p>Yes! IEM offers a 100% tuition fee waiver for candidates securing 96%+ in 10+2 boards, 50% waiver for 90%-95.9%, and 25% waiver for 85%-89.9%. Special concessions apply for sports achievers and defense wards.</p>
+            </div>
+          </div>
+
+          <div class="faq-accordion-item">
+            <button class="faq-question-btn" onclick="toggleFaqAccordion(this)">
+              <span>Can I visit the campus for physical verification and hostel tour?</span>
+              <i class="fa-solid fa-chevron-down faq-arrow-icon"></i>
+            </button>
+            <div class="faq-answer-panel">
+              <p>Absolutely. The IEM Admission Desk is open Monday through Saturday from 9:00 AM to 5:30 PM at Management House, Gurukul Campus, Salt Lake Sector V, Kolkata. Walk-in counseling is welcome.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Direct Counseling & Helpline Bar -->
+        <div class="admission-helpline-card">
+          <div>
+            <h3 style="font-size:1.35rem; font-weight:800; color:var(--primary-dark); margin-bottom:6px;">Need Personal Admission Counseling?</h3>
+            <p style="color:var(--muted-text); font-size:0.95rem; margin-bottom:0;">Our senior faculty counselors are ready to help you choose the best specialization based on your rank and career goals.</p>
+            <div class="helpline-contacts-row">
+              <div class="helpline-contact-item"><i class="fa-solid fa-phone"></i> +91 8010 700 500</div>
+              <div class="helpline-contact-item"><i class="fa-brands fa-whatsapp"></i> +91 9830 123 456</div>
+              <div class="helpline-contact-item"><i class="fa-solid fa-envelope"></i> admissions@iemcal.com</div>
+              <div class="helpline-contact-item"><i class="fa-solid fa-location-dot"></i> Sector V, Salt Lake, Kolkata</div>
+            </div>
+          </div>
+          <div>
+            <button class="btn btn-primary btn-lg" onclick="handleHeroApplyClick()">
+              <i class="fa-solid fa-paper-plane"></i> Apply Online Now
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         VIEW 2: PROGRAMS & FEES CATALOG
+         ========================================================================== -->
+    <section id="viewPrograms" class="view-section">
+      <div class="section-container">
+        <div class="section-header text-center">
+          <span class="section-eyebrow">Courses &amp; Intake 2026-27</span>
+          <h2 class="section-title">Academic Programs &amp; Fee Structure</h2>
+          <p class="section-subtitle">Review eligibility benchmarks, seat matrix, and fee breakdowns across all departments.</p>
+        </div>
+
+        <!-- Filter & Search Toolbar -->
+        <div class="programs-filter-toolbar">
+          <div class="programs-search-box">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" id="programsSearchInput" class="programs-search-input" placeholder="Search by program, discipline or keyword..." oninput="handleFilterPrograms()" />
+          </div>
+          <div class="filter-pills-group" id="programsCategoryPills">
+            <button class="filter-pill-btn active" onclick="setProgramFilter('all', this)"><i class="fa-solid fa-layer-group"></i> All (8)</button>
+            <button class="filter-pill-btn" onclick="setProgramFilter('Engineering (UG)', this)"><i class="fa-solid fa-gears"></i> B.Tech</button>
+            <button class="filter-pill-btn" onclick="setProgramFilter('Computer Applications', this)"><i class="fa-solid fa-laptop-code"></i> BCA &amp; MCA</button>
+            <button class="filter-pill-btn" onclick="setProgramFilter('Management', this)"><i class="fa-solid fa-chart-line"></i> BBA &amp; MBA</button>
+          </div>
+        </div>
+
+        <!-- Dynamic Programs Card Grid -->
+        <div class="programs-grid" id="allProgramsGrid">
+          <!-- Injected dynamically via JS -->
+        </div>
+
+
+        <!-- Comparative Programs Table -->
+        <div class="section-container" style="padding-top:20px; padding-bottom:10px;">
+          <div class="section-header text-center" style="margin-bottom:24px;">
+            <span class="section-eyebrow">Comprehensive Comparison</span>
+            <h3 style="font-size:1.6rem; font-weight:800; color:var(--primary-dark);">Course Matrix &amp; Seat Intake 2026-27</h3>
+            <p class="section-subtitle">Official AICTE approved seat capacities, eligibility criteria, and fee structure.</p>
+          </div>
+
+          <div class="programs-table-wrap">
+            <table class="programs-table">
+              <thead>
+                <tr>
+                  <th>Discipline / Degree</th>
+                  <th>Category</th>
+                  <th>Duration</th>
+                  <th>Intake Seats</th>
+                  <th>Semester Tuition</th>
+                  <th>Eligibility Criteria</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody id="programsTableBody">
+                <!-- Dynamically generated via JS -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         VIEW 3: ADMISSION PROCESS & GUIDELINES
+         ========================================================================== -->
+    <section id="viewProcess" class="view-section">
+      <div class="section-container">
+        <div class="section-header text-center">
+          <span class="section-eyebrow">Candidate Instructions</span>
+          <h2 class="section-title">Mandatory Guidelines &amp; Document Checklist</h2>
+          <p class="section-subtitle">Please ensure all digital credentials meet the required admission criteria before proceeding.</p>
+        </div>
+
+        <div class="guidelines-card-grid">
+          <div class="guide-box">
+            <div class="guide-header"><i class="fa-solid fa-id-badge"></i> Required Identification</div>
+            <ul>
+              <li><strong>Valid Gmail Account:</strong> Only accounts ending in <code>@gmail.com</code> are accepted.</li>
+              <li><strong>12-Digit Aadhaar Card:</strong> Mandatory government UIDAI identification.</li>
+              <li><strong>Candidate Birth Year:</strong> Must be between 2000 and 2015 as per date of birth.</li>
+              <li><strong>Name Validation:</strong> Candidate and guardian names restricted to alphabets and spaces only.</li>
+            </ul>
+          </div>
+          <div class="guide-box">
+            <div class="guide-header"><i class="fa-solid fa-graduation-cap"></i> Academic Eligibility</div>
+            <ul>
+              <li><strong>Class 10th Marks:</strong> Must be at least <code>50%</code> for basic admission eligibility.</li>
+              <li><strong>Class 12th (PCM/PCB):</strong> Must be strictly greater than <code>60%</code> for engineering intake.</li>
+              <li><strong>Entrance Exam Rank:</strong> Must be a valid numeric rank <code>under 1,00,000 (1 Lakh)</code>.</li>
+              <li><strong>Marks Range Check:</strong> Negative scores or percentage exceeding 100% are strictly blocked.</li>
+            </ul>
+          </div>
+          <div class="guide-box" style="background: linear-gradient(180deg, #F0ECFF 0%, #FFFFFF 100%); border-color: var(--electric-violet);">
+            <div class="guide-header" style="color: var(--electric-violet);"><i class="fa-solid fa-award"></i> Merit Scholarships 2026</div>
+            <ul>
+              <li><strong>100% Tuition Waiver:</strong> 96%+ in 10+2 Board exams or Top WBJEE / IEMJEE ranks.</li>
+              <li><strong>50% Tuition Waiver:</strong> 90% - 95.9% aggregate in 10+2 Board exams.</li>
+              <li><strong>25% Tuition Waiver:</strong> 85% - 89.9% in Higher Secondary.</li>
+              <li><strong>Special Categories:</strong> Defense personnel wards, sports achievers, and sibling concessions.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Interactive Document Readiness Checker -->
+        <div class="readiness-checker-card">
+          <div style="display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:12px;">
+            <div>
+              <span class="section-eyebrow" style="color:var(--electric-violet);"><i class="fa-solid fa-clipboard-check"></i> Self-Verification Tool</span>
+              <h3 style="font-size:1.45rem; font-weight:800; color:var(--primary-dark); margin:4px 0;">Interactive Document Readiness Checker</h3>
+              <p style="color:var(--muted-text); font-size:0.9rem; margin:0;">Check off each credential below to ensure you have all scanned files ready before starting your submission.</p>
+            </div>
+            <div id="readinessStatusBadge" style="font-weight:700; font-size:0.85rem; padding:6px 14px; border-radius:var(--radius-full); background:var(--lavender); color:var(--electric-violet);">
+              0 of 6 Ready (0%)
+            </div>
+          </div>
+
+          <div class="readiness-progress-wrapper">
+            <div class="readiness-bar-bg">
+              <div class="readiness-bar-fill" id="readinessProgressBar"></div>
+            </div>
+          </div>
+
+          <div class="readiness-checklist-grid">
+            <label class="readiness-item" onclick="updateDocReadiness()">
+              <input type="checkbox" class="doc-ready-chk" />
+              <div>
+                <div class="readiness-item-title"><i class="fa-solid fa-file-pdf" style="color:#E53935;"></i> Class 10th Admit &amp; Marksheet</div>
+                <div class="readiness-item-desc">Proof of age &amp; secondary examination board marksheet (PDF/JPG, Max 5MB).</div>
+              </div>
+            </label>
+
+            <label class="readiness-item" onclick="updateDocReadiness()">
+              <input type="checkbox" class="doc-ready-chk" />
+              <div>
+                <div class="readiness-item-title"><i class="fa-solid fa-file-pdf" style="color:#E53935;"></i> Class 12th (PCM/PCB) Marksheet</div>
+                <div class="readiness-item-desc">Higher secondary marksheet with minimum 60% in PCM (PDF/JPG).</div>
+              </div>
+            </label>
+
+            <label class="readiness-item" onclick="updateDocReadiness()">
+              <input type="checkbox" class="doc-ready-chk" />
+              <div>
+                <div class="readiness-item-title"><i class="fa-solid fa-id-card-clip" style="color:var(--bright-cyan);"></i> Entrance Exam Rank Card</div>
+                <div class="readiness-item-desc">Official rank card of WBJEE 2026, JEE Main 2026, or IEMJEE (Rank &lt; 1 Lakh).</div>
+              </div>
+            </label>
+
+            <label class="readiness-item" onclick="updateDocReadiness()">
+              <input type="checkbox" class="doc-ready-chk" />
+              <div>
+                <div class="readiness-item-title"><i class="fa-solid fa-fingerprint" style="color:#43A047;"></i> Government Aadhaar Card</div>
+                <div class="readiness-item-desc">Scanned copy of both front &amp; back UIDAI 12-digit Aadhaar Card.</div>
+              </div>
+            </label>
+
+            <label class="readiness-item" onclick="updateDocReadiness()">
+              <input type="checkbox" class="doc-ready-chk" />
+              <div>
+                <div class="readiness-item-title"><i class="fa-solid fa-camera" style="color:#FB8C00;"></i> Passport Size Color Photograph</div>
+                <div class="readiness-item-desc">Recent color photograph with light/white background (JPG/PNG).</div>
+              </div>
+            </label>
+
+            <label class="readiness-item" onclick="updateDocReadiness()">
+              <input type="checkbox" class="doc-ready-chk" />
+              <div>
+                <div class="readiness-item-title"><i class="fa-solid fa-signature" style="color:var(--deep-purple);"></i> Digital Signature Specimen</div>
+                <div class="readiness-item-desc">Clean digital signature on plain white paper (JPG/PNG, Max 2MB).</div>
+              </div>
+            </label>
+          </div>
+        </div>
+
+        <!-- 6-Stage Roadmap Timeline -->
+        <div class="roadmap-timeline-section">
+          <div class="section-header text-center">
+            <span class="section-eyebrow">End-to-End Roadmap</span>
+            <h3 class="section-title">The 6-Stage Digital Admission Lifecycle</h3>
+            <p class="section-subtitle">Track your admission milestones from initial signup through official matriculation.</p>
+          </div>
+
+          <div class="roadmap-timeline-list">
+            <div class="roadmap-step-row">
+              <div class="roadmap-step-badge">1</div>
+              <div class="roadmap-step-card">
+                <div class="roadmap-step-header">
+                  <h4 class="roadmap-step-title">Online Registration &amp; Email Authentication</h4>
+                  <span class="roadmap-timing-pill"><i class="fa-solid fa-clock"></i> 2 Minutes • Instant</span>
+                </div>
+                <p style="color:var(--muted-text); font-size:0.92rem; line-height:1.6; margin:0;">Register using your active Google Account (<code>@gmail.com</code>). Receive your unique IEM Application Tracking ID (e.g., <code>IEM-2026-XXXX</code>) and instant dashboard credentials.</p>
+              </div>
+            </div>
+
+            <div class="roadmap-step-row">
+              <div class="roadmap-step-badge">2</div>
+              <div class="roadmap-step-card">
+                <div class="roadmap-step-header">
+                  <h4 class="roadmap-step-title">Comprehensive Academic &amp; Personal Profile</h4>
+                  <span class="roadmap-timing-pill"><i class="fa-solid fa-clock"></i> 5 Minutes</span>
+                </div>
+                <p style="color:var(--muted-text); font-size:0.92rem; line-height:1.6; margin:0;">Provide candidate particulars, 12-digit Aadhaar UIDAI number, guardian credentials, Class 10th and 12th board percentages, and entrance exam score with rank verification.</p>
+              </div>
+            </div>
+
+            <div class="roadmap-step-row">
+              <div class="roadmap-step-badge">3</div>
+              <div class="roadmap-step-card">
+                <div class="roadmap-step-header">
+                  <h4 class="roadmap-step-title">Paperless Document Verification Studio</h4>
+                  <span class="roadmap-timing-pill"><i class="fa-solid fa-clock"></i> Instant Upload</span>
+                </div>
+                <p style="color:var(--muted-text); font-size:0.92rem; line-height:1.6; margin:0;">Upload your high-resolution digital marksheets, entrance rank card, photo, and signature directly through our secure Document Studio with instant client-side preview.</p>
+              </div>
+            </div>
+
+            <div class="roadmap-step-row">
+              <div class="roadmap-step-badge">4</div>
+              <div class="roadmap-step-card">
+                <div class="roadmap-step-header">
+                  <h4 class="roadmap-step-title">Token Application Fee Payment</h4>
+                  <span class="roadmap-timing-pill"><i class="fa-solid fa-clock"></i> Secure Sandbox Gateway</span>
+                </div>
+                <p style="color:var(--muted-text); font-size:0.92rem; line-height:1.6; margin:0;">Complete the nominal ₹1,000 application fee via simulated UPI QR, Credit/Debit card, or NetBanking. Instant digital transaction receipt generated on payment confirmation.</p>
+              </div>
+            </div>
+
+            <div class="roadmap-step-row">
+              <div class="roadmap-step-badge">5</div>
+              <div class="roadmap-step-card">
+                <div class="roadmap-step-header">
+                  <h4 class="roadmap-step-title">Administrative Scrutiny &amp; Seat Allotment</h4>
+                  <span class="roadmap-timing-pill"><i class="fa-solid fa-clock"></i> 24-48 Hours</span>
+                </div>
+                <p style="color:var(--muted-text); font-size:0.92rem; line-height:1.6; margin:0;">The Central Admissions Committee verifies uploaded documents against official board registries and allocates your provisional branch seat based on merit score and choice preference.</p>
+              </div>
+            </div>
+
+            <div class="roadmap-step-row">
+              <div class="roadmap-step-badge">6</div>
+              <div class="roadmap-step-card">
+                <div class="roadmap-step-header">
+                  <h4 class="roadmap-step-title">Provisional Allotment Letter &amp; Seat Booking</h4>
+                  <span class="roadmap-timing-pill"><i class="fa-solid fa-clock"></i> Official Letter Download</span>
+                </div>
+                <p style="color:var(--muted-text); font-size:0.92rem; line-height:1.6; margin:0;">Pay the provisional seat acceptance fee to lock your branch, and instantly download your Official Provisional Admission Letter complete with digital seal and registrar authorization.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Admission Important Dates 2026-27 -->
+        <div class="admission-calendar-card">
+          <div class="section-header text-center" style="margin-bottom:20px;">
+            <span class="section-eyebrow"><i class="fa-regular fa-calendar-days"></i> Admissions Schedule</span>
+            <h3 style="font-size:1.5rem; font-weight:800; color:var(--primary-dark);">Important Dates &amp; Deadlines (Academic Year 2026-27)</h3>
+            <p style="color:var(--muted-text); font-size:0.9rem;">Mark these critical milestones on your calendar to ensure timely seat locking.</p>
+          </div>
+
+          <div class="calendar-events-grid">
+            <div class="calendar-event-box">
+              <div class="calendar-event-date"><i class="fa-solid fa-calendar-check"></i> 15 January 2026</div>
+              <div class="calendar-event-name">Portal Opening</div>
+              <div class="calendar-event-status">Online registration &amp; application submission begins</div>
+            </div>
+
+            <div class="calendar-event-box">
+              <div class="calendar-event-date"><i class="fa-solid fa-calendar-check"></i> 30 May 2026</div>
+              <div class="calendar-event-name">Round 1 Cutoff &amp; Merit List</div>
+              <div class="calendar-event-status">Publication of first provisional branch allotment</div>
+            </div>
+
+            <div class="calendar-event-box">
+              <div class="calendar-event-date"><i class="fa-solid fa-calendar-check"></i> 10 June 2026</div>
+              <div class="calendar-event-name">Seat Acceptance Fee Deadline</div>
+              <div class="calendar-event-status">Final date for locking provisional seat allocation</div>
+            </div>
+
+            <div class="calendar-event-box">
+              <div class="calendar-event-date"><i class="fa-solid fa-calendar-check"></i> 25 June 2026</div>
+              <div class="calendar-event-name">Round 2 Upgradation</div>
+              <div class="calendar-event-status">Branch slide &amp; waitlist reallocation for vacant seats</div>
+            </div>
+
+            <div class="calendar-event-box">
+              <div class="calendar-event-date"><i class="fa-solid fa-calendar-check"></i> 15 July 2026</div>
+              <div class="calendar-event-name">Physical Document Scrutiny</div>
+              <div class="calendar-event-status">Campus reporting &amp; original certificate validation</div>
+            </div>
+
+            <div class="calendar-event-box">
+              <div class="calendar-event-date"><i class="fa-solid fa-calendar-check"></i> 01 August 2026</div>
+              <div class="calendar-event-name">Freshers Induction &amp; Classes</div>
+              <div class="calendar-event-status">Orientation week &amp; academic session commencement</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="text-center mt-6">
+          <button class="btn btn-primary btn-lg" onclick="handleHeroApplyClick()">
+            <i class="fa-solid fa-arrow-right"></i> Proceed to Student Registration / Portal
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         VIEW 4: STUDENT PORTAL (Sidebar Navigation & Multi-Tab Hub)
+         ========================================================================== -->
+    <section id="viewStudent" class="view-section">
+      
+      <!-- When Student is NOT logged in -->
+      <div id="studentLoggedOutState" class="section-container">
+        <div class="auth-box card-elevated" style="max-width:540px; margin:40px auto; text-align:center; padding:40px 30px; background:var(--white); border-radius:var(--radius-xl); border:1px solid var(--lavender-border); box-shadow:var(--shadow-xl);">
+          <div class="auth-icon-badge" style="width:64px; height:64px; border-radius:50%; background:var(--lavender); color:var(--electric-violet); font-size:1.8rem; display:flex; align-items:center; justify-content:center; margin:0 auto 16px;">
+            <i class="fa-solid fa-user-graduate"></i>
+          </div>
+          <h2 style="font-size:1.8rem; margin-bottom:8px; color:var(--primary-dark);">Student Admission Portal</h2>
+          <p style="color:var(--muted-text); font-size:0.95rem; margin-bottom:24px;">Sign in with your registered <strong>@gmail.com</strong> ID to track your application, upload documents, pay fees, and access your allotment letter.</p>
+          
+          <div style="display:flex; flex-direction:column; gap:12px;">
+            <button class="btn btn-primary btn-block btn-lg" onclick="openAuthModal('login')">
+              <i class="fa-solid fa-right-to-bracket"></i> Login with Gmail
+            </button>
+            <button class="btn btn-secondary-light btn-block btn-lg" onclick="openAuthModal('register')">
+              <i class="fa-solid fa-user-plus"></i> New Student Registration
+            </button>
+          </div>
+
+          <div style="margin-top:28px; padding-top:20px; border-top:1px solid var(--lavender-border); text-align:left;">
+            <span style="font-size:0.8rem; font-weight:700; color:var(--electric-violet); text-transform:uppercase; letter-spacing:0.05em;"><i class="fa-solid fa-flask"></i> Quick Candidate Logins:</span>
+            <div style="display:flex; flex-direction:column; gap:8px; margin-top:10px;">
+              <button class="quick-account-btn" style="color:var(--main-text); background:var(--lavender); border-color:var(--lavender-border); width:100%; justify-content:flex-start; padding:8px 14px;" onclick="quickLogin('rahul.iem2026@gmail.com', 'student123')">
+                <i class="fa-solid fa-user-clock" style="color:var(--electric-violet);"></i> Rahul (Pending Verification)
+              </button>
+              <button class="quick-account-btn highlight" style="width:100%; justify-content:flex-start; padding:8px 14px;" onclick="quickLogin('priya.banerjee26@gmail.com', 'student123')">
+                <i class="fa-solid fa-user-check"></i> Priya (Approved - Ready to Pay Admission Fee)
+              </button>
+              <button class="quick-account-btn" style="color:var(--main-text); background:var(--lavender); border-color:var(--lavender-border); width:100%; justify-content:flex-start; padding:8px 14px;" onclick="quickLogin('aniket.das99@gmail.com', 'student123')">
+                <i class="fa-solid fa-graduation-cap" style="color:var(--mint-green-dark);"></i> Aniket (Confirmed Admitted &amp; Letter Ready)
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- When Student IS logged in -->
+      <div id="studentLoggedInState" class="portal-wrapper d-none">
+        
+        <!-- Mobile Sidebar Drawer Toggle Bar -->
+        <div class="portal-mobile-toggle-bar">
+          <button class="btn btn-secondary-light btn-sm" onclick="toggleStudentSidebar()">
+            <i class="fa-solid fa-bars"></i> Student Menu
+          </button>
+          <span style="font-weight:700; font-size:0.85rem; color:var(--deep-purple);">
+            <i class="fa-solid fa-user-graduate"></i> Student Desk
+          </span>
+        </div>
+
+        <!-- Student Sidebar -->
+        <aside class="portal-sidebar" id="studentSidebar">
+          <div class="sidebar-profile-card">
+            <div class="sidebar-avatar" id="studentSidebarAvatar">RS</div>
+            <div class="sidebar-user-details">
+              <span class="sidebar-user-name" id="studentSidebarName">Rahul Sharma</span>
+              <span class="sidebar-user-meta" id="studentSidebarAppId">IEM-2026-8492</span>
+            </div>
+          </div>
+
+          <ul class="sidebar-nav-list">
+            <li class="sidebar-nav-item">
+              <button class="sidebar-nav-btn active" id="btnNavStudentDashboard" onclick="switchStudentNav('dashboard')">
+                <i class="fa-solid fa-gauge-high"></i> <span>Dashboard</span>
+              </button>
+            </li>
+            <li class="sidebar-nav-item">
+              <button class="sidebar-nav-btn" id="btnNavStudentProfile" onclick="switchStudentNav('profile')">
+                <i class="fa-solid fa-id-card"></i> <span>My Profile</span>
+              </button>
+            </li>
+            <li class="sidebar-nav-item">
+              <button class="sidebar-nav-btn" id="btnNavStudentApplication" onclick="switchStudentNav('application')">
+                <i class="fa-solid fa-file-pen"></i> <span>Application Form</span>
+              </button>
+            </li>
+            <li class="sidebar-nav-item">
+              <button class="sidebar-nav-btn" id="btnNavStudentFees" onclick="switchStudentNav('fees')">
+                <i class="fa-solid fa-credit-card"></i> <span>Fees &amp; Payments</span>
+              </button>
+            </li>
+            <li class="sidebar-nav-item">
+              <button class="sidebar-nav-btn" id="btnNavStudentNotifications" onclick="switchStudentNav('notifications')">
+                <i class="fa-solid fa-bell"></i> <span>Notifications</span>
+                <span class="sidebar-badge" id="studentUnreadBadge">2</span>
+              </button>
+            </li>
+            <li class="sidebar-nav-item" style="margin-top:14px; padding-top:14px; border-top:1px solid var(--lavender-border);">
+              <button class="sidebar-nav-btn" style="color:var(--coral);" onclick="logout()">
+                <i class="fa-solid fa-arrow-right-from-bracket"></i> <span>Logout</span>
+              </button>
+            </li>
+          </ul>
+        </aside>
+
+        <!-- Student Dynamic Content Workspace -->
+        <div class="student-content-area" id="studentContentArea">
+          
+          <!-- Dynamic Alert Banner (Approval / Flagged Docs) -->
+          <div id="studentAlertBanner" class="d-none"></div>
+
+          <!-- TAB 1: STUDENT DASHBOARD OVERVIEW -->
+          <div id="tabStudentNavDashboard" class="tab-pane active">
+            <!-- Personalized Welcome Banner -->
+            <div class="student-welcome-banner">
+              <div class="welcome-info-col">
+                <h2 id="studentWelcomeName">Welcome back, Rahul Sharma!</h2>
+                <p style="color:#D6D2EB; font-size:0.95rem;">Here is your live application status and enrollment progression for Academic Session 2026-27.</p>
+                
+                <div class="welcome-meta-badges">
+                  <span class="meta-pill"><i class="fa-solid fa-hashtag"></i> App ID: <strong id="studentWelcomeAppId">IEM-2026-8492</strong></span>
+                  <span class="meta-pill"><i class="fa-solid fa-book-bookmark"></i> Program: <strong id="studentWelcomeCourse">B.Tech Computer Science</strong></span>
+                  <span class="meta-pill"><i class="fa-solid fa-envelope"></i> <strong id="studentWelcomeEmail">rahul.iem2026@gmail.com</strong></span>
+                </div>
+              </div>
+
+              <div class="status-indicator-pill" id="studentStatusPill">
+                <span class="status-dot"></span>
+                <span id="studentStatusText">Under Review</span>
+              </div>
+            </div>
+
+            <!-- Staggered KPI Metrics Grid -->
+            <div class="kpi-cards-grid mt-4">
+              <div class="stat-card">
+                <div class="stat-icon-wrapper violet">
+                  <i class="fa-solid fa-file-invoice"></i>
+                </div>
+                <div class="stat-data">
+                  <span class="stat-title">Application Status</span>
+                  <span class="stat-number" id="kpiStudentAppStatus" style="font-size:1.15rem;">Under Review</span>
+                  <span class="stat-subtitle" id="kpiStudentAppSub">Pending Officer Check</span>
+                </div>
+              </div>
+
+              <div class="stat-card">
+                <div class="stat-icon-wrapper mint">
+                  <i class="fa-solid fa-receipt"></i>
+                </div>
+                <div class="stat-data">
+                  <span class="stat-title">Total Paid Fees</span>
+                  <span class="stat-number" id="kpiStudentTotalPaid">₹ 1,000</span>
+                  <span class="stat-subtitle" id="kpiStudentPaidSub">Total Amount Paid</span>
+                </div>
+              </div>
+
+              <div class="stat-card">
+                <div class="stat-icon-wrapper coral">
+                  <i class="fa-solid fa-clock"></i>
+                </div>
+                <div class="stat-data">
+                  <span class="stat-title">Outstanding Fees</span>
+                  <span class="stat-number" id="kpiStudentOutstanding">₹ 50,000</span>
+                  <span class="stat-subtitle" id="kpiStudentOutstandingSub">Admission Fee</span>
+                </div>
+              </div>
+
+              <div class="stat-card">
+                <div class="stat-icon-wrapper cyan">
+                  <i class="fa-solid fa-cloud-arrow-up"></i>
+                </div>
+                <div class="stat-data">
+                  <span class="stat-title">Documents</span>
+                  <span class="stat-number" id="kpiStudentDocCount">6 / 6</span>
+                  <span class="stat-subtitle">All Files Uploaded</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- 6-Step Admission Lifecycle Stepper -->
+            <div class="progress-stepper-card mt-4">
+              <h3 class="stepper-title"><i class="fa-solid fa-route"></i> Admission Lifecycle Tracker</h3>
+              <div class="stepper-container" id="admissionStepper">
+                <!-- Injected dynamically via JS -->
+              </div>
+            </div>
+
+            <!-- Dashboard Quick Actions & Recent Activity -->
+            <div style="display:grid; grid-template-columns:1.2fr 0.8fr; gap:24px;" class="mt-4">
+              <!-- Quick Action Box -->
+              <div class="card-elevated" style="background:var(--white); border-radius:var(--radius-xl); border:1px solid var(--lavender-border); padding:24px;">
+                <h4 style="font-size:1.05rem; font-weight:800; color:var(--primary-dark); margin-bottom:16px;">
+                  <i class="fa-solid fa-bolt" style="color:var(--electric-violet);"></i> Recommended Next Actions
+                </h4>
+                <div style="display:flex; flex-direction:column; gap:12px;" id="studentActionRecommendations">
+                  <!-- Injected via JS -->
+                </div>
+              </div>
+
+              <!-- Notifications Snapshot -->
+              <div class="card-elevated" style="background:var(--white); border-radius:var(--radius-xl); border:1px solid var(--lavender-border); padding:24px;">
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px;">
+                  <h4 style="font-size:1.05rem; font-weight:800; color:var(--primary-dark);">
+                    <i class="fa-solid fa-bell" style="color:var(--electric-violet);"></i> Recent Updates
+                  </h4>
+                  <a href="javascript:void(0)" onclick="switchStudentNav('notifications')" style="font-size:0.8rem; font-weight:700;">View All</a>
+                </div>
+                <div style="display:flex; flex-direction:column; gap:10px;" id="studentDashboardNotifications">
+                  <!-- Injected via JS -->
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- TAB 2: MY PROFILE -->
+          <div id="tabStudentNavProfile" class="tab-pane">
+            <div class="card-elevated" style="background:var(--white); border-radius:var(--radius-xl); border:1px solid var(--lavender-border); padding:30px;">
+              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:24px; padding-bottom:16px; border-bottom:1px solid var(--lavender-border);">
+                <div>
+                  <h3 style="font-size:1.4rem; color:var(--primary-dark);"><i class="fa-solid fa-id-card"></i> Candidate Profile Dossier</h3>
+                  <p style="color:var(--muted-text); font-size:0.88rem; margin:0;">Personal, contact, and academic identification records registered with IEM Admissions.</p>
+                </div>
+                <button class="btn btn-warning" onclick="switchStudentNav('application'); toggleApplicationEditMode(true);">
+                  <i class="fa-solid fa-pen-to-square"></i> Modify / Edit Profile
+                </button>
+              </div>
+
+              <div id="studentProfileDetailsGrid" style="display:grid; grid-template-columns:repeat(3, 1fr); gap:20px;">
+                <!-- Injected via JS -->
+              </div>
+            </div>
+          </div>
+
+          <!-- TAB 3: GUIDED APPLICATION EXPERIENCE (4-Step Guided Wizard) -->
+          <div id="tabStudentNavApplication" class="tab-pane">
+            <div class="student-tabs-wrapper">
+              
+              <!-- 4-Step Guided Wizard Navigation Bar -->
+              <div class="wizard-header-nav" id="appWizardNav">
+                <button type="button" class="wizard-step-tab active" id="wizardNavStep1" onclick="goToAppWizardStep(1)">
+                  <span class="step-badge" id="wizardBadge1">1</span>
+                  <div class="step-info">
+                    <span class="step-info-title">Personal Details</span>
+                    <span class="step-info-desc">Identity &amp; Contact</span>
+                  </div>
+                </button>
+                <i class="fa-solid fa-chevron-right wizard-nav-arrow"></i>
+                <button type="button" class="wizard-step-tab" id="wizardNavStep2" onclick="goToAppWizardStep(2)">
+                  <span class="step-badge" id="wizardBadge2">2</span>
+                  <div class="step-info">
+                    <span class="step-info-title">Academic Details</span>
+                    <span class="step-info-desc">Scores &amp; Exam Rank</span>
+                  </div>
+                </button>
+                <i class="fa-solid fa-chevron-right wizard-nav-arrow"></i>
+                <button type="button" class="wizard-step-tab" id="wizardNavStep3" onclick="goToAppWizardStep(3)">
+                  <span class="step-badge" id="wizardBadge3">3</span>
+                  <div class="step-info">
+                    <span class="step-info-title">Review &amp; Documents</span>
+                    <span class="step-info-desc">Verify &amp; Uploads</span>
+                  </div>
+                </button>
+                <i class="fa-solid fa-chevron-right wizard-nav-arrow"></i>
+                <button type="button" class="wizard-step-tab" id="wizardNavStep4" onclick="goToAppWizardStep(4)">
+                  <span class="step-badge" id="wizardBadge4">4</span>
+                  <div class="step-info">
+                    <span class="step-info-title">Submit &amp; Lifecycle</span>
+                    <span class="step-info-desc">Status &amp; Letter</span>
+                  </div>
+                </button>
+              </div>
+
+              <!-- Application Lock / Edit Status Banner -->
+              <div class="application-lock-banner" id="appLockBanner">
+                <div class="lock-banner-icon" id="lockBannerIcon"><i class="fa-solid fa-shield-halved"></i></div>
+                <div class="lock-banner-content">
+                  <h4 id="lockBannerTitle">Application Data Stored &amp; Protected</h4>
+                  <p id="lockBannerDesc">Your personal and academic details are securely recorded under your Application ID. Direct typing is locked to prevent accidental overwrites. Click "Modify / Edit Data" to update your profile.</p>
+                </div>
+                <button type="button" class="btn btn-warning" id="btnTopEditAction" onclick="toggleApplicationEditMode(true)">
+                  <i class="fa-solid fa-pen-to-square"></i> Modify / Edit Data
+                </button>
+              </div>
+
+              <form id="studentApplicationForm" onsubmit="handleSaveApplication(event)">
+
+                <!-- WIZARD STEP 1: PERSONAL INFORMATION -->
+                <div id="wizardPane1" class="wizard-pane active">
+                  <div class="form-section-group">
+                    <div class="form-section-title"><i class="fa-solid fa-user"></i> Step 1: Personal Identification &amp; Contact Details</div>
+                    <div class="form-grid-3">
+                      <div class="form-group">
+                        <label>Candidate Full Name *</label>
+                        <input type="text" id="appFullName" class="form-control" placeholder="e.g. Rahul Sharma" maxlength="60" pattern="^[A-Z][a-zA-Z.]*(\s+[A-Z][a-zA-Z.]*)+$" title="First, middle, and last name must each start with a capital letter (e.g. Rahul Sharma)" oninput="onNameFieldInput(this)" onblur="validateNameField(this)" required />
+                        <small class="text-muted">First, middle &amp; last name must start with a capital letter (e.g. Rahul Sharma, max 60 chars)</small>
+                      </div>
+                      <div class="form-group">
+                        <label>Registered Gmail ID *</label>
+                        <input type="email" id="appGmail" class="form-control" readonly />
+                        <small class="text-muted">Linked to your registered account</small>
+                      </div>
+                      <div class="form-group">
+                        <label>Mobile Number *</label>
+                        <div style="display:flex; gap:6px;">
+                          <select id="appCountryCode" class="form-control" style="width:125px; flex-shrink:0;" onchange="handleCountryCodeChange(this, 'appPhone')">
+                            <option value="+91" selected>🇮🇳 +91</option>
+                            <option value="+1">🇺🇸 +1</option>
+                            <option value="+44">🇬🇧 +44</option>
+                            <option value="+971">🇦🇪 +971</option>
+                            <option value="+880">🇧🇩 +880</option>
+                            <option value="+977">🇳🇵 +977</option>
+                            <option value="+65">🇸🇬 +65</option>
+                            <option value="+61">🇦🇺 +61</option>
+                            <option value="+49">🇩🇪 +49</option>
+                            <option value="+966">🇸🇦 +966</option>
+                          </select>
+                          <input type="tel" id="appPhone" class="form-control" placeholder="Enter mobile number" autocomplete="tel" oninput="formatPhoneInput(this, 'appCountryCode')" required />
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label>Aadhaar Card Number *</label>
+                        <input type="text" id="appAadhar" class="form-control" placeholder="12-digit UIDAI Number" maxlength="14" oninput="formatAadharInput(this)" required />
+                        <small class="text-muted">12 digits (e.g. 5432 1098 7654)</small>
+                      </div>
+                      <div class="form-group">
+                        <label>Father's / Guardian's Name *</label>
+                        <input type="text" id="appFatherName" class="form-control" placeholder="Guardian Name" pattern="[a-zA-Z\s.]+" oninput="this.value=this.value.replace(/[^a-zA-Z\s.]/g,'')" required />
+                        <small class="text-muted">Alphabets and spaces only</small>
+                      </div>
+                      <div class="form-group">
+                        <label>Date of Birth *</label>
+                        <input type="date" id="appDob" class="form-control" min="2000-01-01" max="2015-12-31" required />
+                        <small class="text-muted">Birth year must be between 2000 and 2015</small>
+                      </div>
+                      <div class="form-group">
+                        <label>Gender *</label>
+                        <select id="appGender" class="form-control" required>
+                          <option value="Male">Male</option>
+                          <option value="Female">Female</option>
+                          <option value="Other">Other</option>
+                        </select>
+                      </div>
+                      <div class="form-group">
+                        <label>Category *</label>
+                        <select id="appCategory" class="form-control" required>
+                          <option value="General">General</option>
+                          <option value="OBC">OBC</option>
+                          <option value="SC">SC</option>
+                          <option value="ST">ST</option>
+                          <option value="EWS">EWS</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="wizard-action-footer">
+                    <span class="locked-hint-text">
+                      <i class="fa-solid fa-circle-info"></i> Step 1 of 4: Personal Information
+                    </span>
+                    <button type="button" class="btn btn-primary btn-lg" onclick="goToAppWizardStep(2)">
+                      Proceed to Academic Details <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                  </div>
+                </div>
+
+                <!-- WIZARD STEP 2: ACADEMIC DETAILS -->
+                <div id="wizardPane2" class="wizard-pane">
+                  <div class="form-section-group">
+                    <div class="form-section-title"><i class="fa-solid fa-graduation-cap"></i> Step 2: Academic Eligibility &amp; Entrance Exam</div>
+                    <div class="form-grid-3">
+                      <div class="form-group">
+                        <label>Applying For Program *</label>
+                        <select id="appCourse" class="form-control" required>
+                          <option value="B.Tech Computer Science & Engineering">B.Tech - Computer Science &amp; Engineering (CSE)</option>
+                          <option value="B.Tech Artificial Intelligence & Machine Learning">B.Tech - AI &amp; ML (CSE Specialization)</option>
+                          <option value="B.Tech Information Technology">B.Tech - Information Technology (IT)</option>
+                          <option value="B.Tech Electronics & Communication Engineering">B.Tech - Electronics &amp; Communication (ECE)</option>
+                          <option value="Bachelor of Computer Applications (BCA)">Bachelor of Computer Applications (BCA)</option>
+                          <option value="Bachelor of Business Administration (BBA)">Bachelor of Business Administration (BBA)</option>
+                          <option value="Master of Computer Applications (MCA)">Master of Computer Applications (MCA)</option>
+                          <option value="Master of Business Administration (MBA)">Master of Business Administration (MBA)</option>
+                        </select>
+                      </div>
+                      <div class="form-group">
+                        <label>Class 10th Percentage / CGPA *</label>
+                        <input type="number" id="app10thScore" class="form-control" min="50" max="100" step="0.01" placeholder="e.g. 78.0 (Min 50%)" onkeydown="if(event.key === '-' || event.key === 'e' || event.key === 'E') event.preventDefault();" oninput="validate10thScoreLive(this)" onblur="validate10thScoreLive(this)" required />
+                        <small class="validation-feedback" id="app10thScoreFeedback">Must be at least 50% for admission eligibility (50% - 100%)</small>
+                      </div>
+                      <div class="form-group">
+                        <label>Class 12th Percentage (PCM/PCB) *</label>
+                        <input type="number" id="app12thScore" class="form-control" min="60.01" max="100" step="0.01" placeholder="e.g. 90.0 (Above 60%)" onkeydown="if(event.key === '-' || event.key === 'e' || event.key === 'E') event.preventDefault();" oninput="validate12thScoreLive(this)" onblur="validate12thScoreLive(this)" required />
+                        <small class="validation-feedback" id="app12thScoreFeedback">Must be above 60% for admission eligibility (PCM/PCB)</small>
+                      </div>
+                      <div class="form-group">
+                        <label>Entrance Exam Appeared *</label>
+                        <select id="appExamType" class="form-control" required>
+                          <option value="IEMJEE 2026">IEMJEE 2026 (Joint Entrance Exam)</option>
+                          <option value="WBJEE 2026">WBJEE 2026 (West Bengal JEE)</option>
+                          <option value="JEE Main 2026">JEE Main 2026</option>
+                          <option value="IEMCET 2026">IEMCET 2026 (For BCA / BBA / MCA)</option>
+                          <option value="JECA 2026">JECA 2026 (For MCA)</option>
+                          <option value="CAT / MAT / JEMAT 2026">CAT / MAT / JEMAT 2026 (For MBA)</option>
+                          <option value="Merit Basis">Merit Basis (Direct 10+2 PCM/PCB Score)</option>
+                        </select>
+                      </div>
+                      <div class="form-group">
+                        <label>Entrance Exam Rank / Score *</label>
+                        <input type="text" id="appExamRank" class="form-control" placeholder="e.g. 12345 or GMR 28400 (under 1 Lakh)" oninput="validateExamRankLive(this)" onblur="validateExamRankLive(this)" required />
+                        <small class="validation-feedback" id="appExamRankFeedback">Must be a valid rank under 1 Lakh (1 to 1,00,000)</small>
+                      </div>
+                    </div>
+                    <div class="form-group mt-4">
+                      <label>Permanent Residential Address *</label>
+                      <textarea id="appAddress" class="form-control" rows="2" placeholder="Full residential street address with pin code" required></textarea>
+                    </div>
+                  </div>
+
+                  <div class="wizard-action-footer">
+                    <button type="button" class="btn btn-secondary-light btn-lg" onclick="goToAppWizardStep(1)">
+                      <i class="fa-solid fa-arrow-left"></i> Back to Personal Details
+                    </button>
+                    <button type="button" class="btn btn-primary btn-lg" onclick="goToAppWizardStep(3)">
+                      Proceed to Review &amp; Documents <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                  </div>
+                </div>
+
+                <!-- WIZARD STEP 3: REVIEW DETAILS & DOCUMENT STUDIO -->
+                <div id="wizardPane3" class="wizard-pane">
+                  <!-- Profile Dossier Summary Card -->
+                  <div class="app-review-summary-card">
+                    <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid var(--lavender-border); padding-bottom:12px;">
+                      <div>
+                        <h4 style="font-size:1.15rem; color:var(--deep-purple); margin:0;"><i class="fa-solid fa-clipboard-check"></i> Candidate Application Summary</h4>
+                        <p style="font-size:0.8rem; color:var(--muted-text); margin:2px 0 0;">Verify your registered credentials before submitting for official verification.</p>
+                      </div>
+                      <button type="button" class="btn btn-outline btn-sm" onclick="goToAppWizardStep(1)">
+                        <i class="fa-solid fa-pen"></i> Edit Information
+                      </button>
+                    </div>
+
+                    <div class="app-review-grid" id="wizardSummaryGrid">
+                      <!-- Injected via JS -->
+                    </div>
+                  </div>
+
+                  <!-- Document Studio Header & Grid -->
+                  <div class="doc-studio-header mb-4">
+                    <h3 style="font-size:1.2rem; color:var(--primary-dark);"><i class="fa-solid fa-cloud-arrow-up"></i> Document Verification Studio</h3>
+                    <p style="color:var(--muted-text); font-size:0.86rem; margin:0;">Upload clear digital copies of mandatory credentials. Accepted formats: JPG, PNG, PDF (Max 15MB each).</p>
+                  </div>
+
+                  <div class="doc-studio-grid" id="studentDocGrid">
+                    <!-- Upload cards injected via JS -->
+                  </div>
+
+                  <div class="wizard-action-footer">
+                    <button type="button" class="btn btn-secondary-light btn-lg" onclick="goToAppWizardStep(2)">
+                      <i class="fa-solid fa-arrow-left"></i> Back to Academic Details
+                    </button>
+                    <button type="button" class="btn btn-primary btn-lg" onclick="goToAppWizardStep(4)">
+                      Proceed to Final Submission &amp; Status <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                  </div>
+                </div>
+
+                <!-- WIZARD STEP 4: SUBMIT APPLICATION & LIFECYCLE TRACKER -->
+                <div id="wizardPane4" class="wizard-pane">
+                  
+                  <!-- Dynamic Lifecycle Feedback Banners -->
+                  <div id="appStep4FeedbackArea">
+                    <!-- Injected dynamically based on applicant status:
+                         - Approved banner with immediate admission fee action
+                         - Rejected/Correction banner with admin remarks
+                         - Admitted banner with letter download -->
+                  </div>
+
+                  <!-- Submission Readiness Checklist -->
+                  <div class="card-elevated" style="background:var(--white); border-radius:var(--radius-xl); border:1px solid var(--lavender-border); padding:26px; margin-bottom:24px;">
+                    <h4 style="font-size:1.15rem; color:var(--deep-purple); margin-bottom:6px;"><i class="fa-solid fa-list-check" style="color:var(--electric-violet);"></i> Submission Readiness Checklist</h4>
+                    <p style="font-size:0.85rem; color:var(--muted-text); margin-bottom:16px;">Both mandatory requirements below must be satisfied before submitting to the Admissions Committee.</p>
+
+                    <div class="submission-checklist" id="appSubmissionChecklist">
+                      <!-- Injected via JS: Fee check + Document count check -->
+                    </div>
+
+                    <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px; margin-top:24px; padding-top:20px; border-top:1px solid var(--lavender-border);">
+                      <div>
+                        <span style="font-size:0.88rem; font-weight:700; color:var(--main-text);">Final Candidate Declaration</span>
+                        <p style="font-size:0.78rem; color:var(--muted-text); margin:0;">I certify that all academic and personal details provided are authentic.</p>
+                      </div>
+                      <button type="button" class="btn btn-primary btn-lg" id="btnSubmitForReviewWizard" onclick="submitDocumentsForAdminReview()">
+                        <i class="fa-solid fa-paper-plane"></i> Submit Application for Officer Review
+                      </button>
+                    </div>
+                  </div>
+
+                  <!-- Provisional Admission Letter Container (Shown when Admitted) -->
+                  <div id="admissionLetterContainer" class="d-none">
+                    <!-- Injected dynamically via JS -->
+                  </div>
+
+                  <div class="wizard-action-footer">
+                    <button type="button" class="btn btn-secondary-light btn-lg" onclick="goToAppWizardStep(3)">
+                      <i class="fa-solid fa-arrow-left"></i> Back to Review &amp; Documents
+                    </button>
+                    <button type="button" class="btn btn-outline btn-lg" onclick="switchStudentNav('dashboard')">
+                      <i class="fa-solid fa-gauge-high"></i> Return to Student Dashboard
+                    </button>
+                  </div>
+                </div>
+
+                <!-- Form Controls Actions Bar (for editing mode) -->
+                <div class="form-actions-bar mt-4 d-none" id="appFormActionsBar" style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px;">
+                  <button type="submit" class="btn btn-primary btn-lg" id="btnSaveApp">
+                    <i class="fa-solid fa-floppy-disk"></i> Save &amp; Commit Updated Data
+                  </button>
+                  <button type="button" class="btn btn-secondary btn-lg" id="btnCancelEditApp" onclick="toggleApplicationEditMode(false)">
+                    <i class="fa-solid fa-xmark"></i> Cancel Edits
+                  </button>
+                  <span class="locked-hint-text" id="appLockedStatusBadge">
+                    <i class="fa-solid fa-lock"></i> Secured under ID: <strong id="appLockedIdLabel">IEM-2026-8492</strong>
+                  </span>
+                </div>
+              </form>
+
+            </div>
+          </div>
+
+          <!-- TAB 4: FEES & PAYMENTS HUB -->
+          <div id="tabStudentNavFees" class="tab-pane">
+            <div class="fee-hub-grid">
+              
+              <!-- Card 1: Application Fee (₹1,000) -->
+              <div class="fee-card" id="feeCardApplication">
+                <div>
+                  <div class="fee-card-header">
+                    <span class="fee-title">Application Processing Fee</span>
+                    <span class="badge badge-info">Step 1 Fee</span>
+                  </div>
+                  <div class="fee-amount-display">₹ 1,000.00</div>
+                  <p class="fee-desc">Mandatory processing fee for verification of credentials and enrollment review.</p>
+                </div>
+                <div id="appFeeButtonContainer">
+                  <!-- Dynamic Button -->
+                </div>
+              </div>
+
+              <!-- Card 2: Admission Fee (₹50,000) -->
+              <div class="fee-card" id="feeCardAdmission">
+                <div>
+                  <div class="fee-card-header">
+                    <span class="fee-title">Provisional Admission Fee</span>
+                    <span class="badge badge-warning">Step 2 Fee</span>
+                  </div>
+                  <div class="fee-amount-display" id="admissionFeeDisplayAmt">₹ 50,000.00</div>
+                  <p class="fee-desc">Provisional seat allotment confirmation fee (unlocked upon Admin approval).</p>
+                </div>
+                <div id="admissionFeeButtonContainer">
+                  <!-- Dynamic Button -->
+                </div>
+              </div>
+
+              <!-- Card 3: Semester Tuition Fee (₹85,000) -->
+              <div class="fee-card" id="feeCardSemester">
+                <div>
+                  <div class="fee-card-header">
+                    <span class="fee-title">1st Semester Academic Fee</span>
+                    <span class="badge badge-success">Step 3 Fee</span>
+                  </div>
+                  <div class="fee-amount-display" id="semesterFeeDisplayAmt">₹ 85,000.00</div>
+                  <p class="fee-desc">First Semester comprehensive academic, lab, faculty &amp; library tuition fee.</p>
+                </div>
+                <div id="semesterFeeButtonContainer">
+                  <!-- Dynamic Button: Locked until Admission, then Pay ₹85,000, then Paid -->
+                </div>
+              </div>
+
+            </div>
+
+            <!-- Student Payment History Ledger -->
+            <div class="card-elevated mt-6" style="background:var(--white); border-radius:var(--radius-xl); border:1px solid var(--lavender-border); padding:24px;">
+              <h4 style="font-size:1.15rem; font-weight:800; color:var(--primary-dark); margin-bottom:16px;">
+                <i class="fa-solid fa-receipt" style="color:var(--electric-violet);"></i> Transaction Ledger &amp; Receipts
+              </h4>
+              <div class="table-responsive" style="overflow-x:auto;">
+                <table class="custom-table">
+                  <thead>
+                    <tr>
+                      <th>Transaction ID</th>
+                      <th>Fee Purpose</th>
+                      <th>Amount</th>
+                      <th>Payment Mode</th>
+                      <th>Status</th>
+                      <th>Timestamp</th>
+                      <th class="text-right">Receipt</th>
+                    </tr>
+                  </thead>
+                  <tbody id="studentTransactionsTableBody">
+                    <!-- Injected via JS -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <!-- TAB 5: NOTIFICATIONS CENTER -->
+          <div id="tabStudentNavNotifications" class="tab-pane">
+            <div class="card-elevated" style="background:var(--white); border-radius:var(--radius-xl); border:1px solid var(--lavender-border); padding:30px;">
+              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px; padding-bottom:16px; border-bottom:1px solid var(--lavender-border);">
+                <div>
+                  <h3 style="font-size:1.3rem; color:var(--primary-dark);"><i class="fa-solid fa-bell"></i> Campus Notification Feed</h3>
+                  <p style="color:var(--muted-text); font-size:0.86rem; margin:0;">Real-time notifications regarding admissions, documents, payments, and orientation.</p>
+                </div>
+                <button class="btn btn-outline btn-sm" onclick="markAllNotificationsAsRead()">
+                  <i class="fa-solid fa-check-double"></i> Mark All as Read
+                </button>
+              </div>
+
+              <div id="studentNotificationsFullList" style="display:flex; flex-direction:column; gap:12px;">
+                <!-- Injected via JS -->
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         VIEW 5: ADMINISTRATOR PORTAL (Navy Sidebar + Modern Enterprise Desk)
+         ========================================================================== -->
+    <section id="viewAdmin" class="view-section">
+      
+      <!-- Admin Logged Out State -->
+      <div id="adminLoggedOutState" class="section-container">
+        <div class="auth-box card-elevated" style="max-width:480px; margin:40px auto; background:var(--primary-dark); border-radius:var(--radius-xl); border:1px solid rgba(121, 87, 255, 0.3); padding:40px 30px; box-shadow:var(--shadow-dark); color:var(--white);">
+          <div class="auth-icon-badge" style="width:64px; height:64px; border-radius:50%; background:rgba(121, 87, 255, 0.2); color:var(--bright-cyan); font-size:1.8rem; display:flex; align-items:center; justify-content:center; margin:0 auto 16px;">
+            <i class="fa-solid fa-shield-halved"></i>
+          </div>
+          <h2 style="font-size:1.75rem; text-align:center; color:var(--white); margin-bottom:6px;">Administrator Desk</h2>
+          <p style="color:#A39EBE; text-align:center; font-size:0.9rem; margin-bottom:24px;">Restricted access for Admissions Committee and Document Verification Officers.</p>
+          
+          <form onsubmit="handleAdminLogin(event)">
+            <div class="form-group" style="margin-bottom:14px;">
+              <label style="color:#D6D2EB;">Administrator Gmail ID *</label>
+              <input type="email" id="adminEmailInput" class="form-control" value="admin@gmail.com" style="background:rgba(255, 255, 255, 0.08); border-color:rgba(255, 255, 255, 0.15); color:var(--white);" required />
+            </div>
+            <div class="form-group" style="margin-bottom:20px;">
+              <label style="color:#D6D2EB;">Admin Access Key *</label>
+              <input type="password" id="adminPasswordInput" class="form-control" value="admin123" style="background:rgba(255, 255, 255, 0.08); border-color:rgba(255, 255, 255, 0.15); color:var(--white);" required />
+            </div>
+            <button type="submit" class="btn btn-primary btn-block btn-lg">
+              <i class="fa-solid fa-key"></i> Authenticate &amp; Open Desk
+            </button>
+          </form>
+
+          <div style="margin-top:20px; text-align:center; font-size:0.78rem; color:#A39EBE;">
+            Default Credentials: <code>admin@gmail.com</code> | <code>admin123</code>
+          </div>
+        </div>
+      </div>
+
+      <!-- Admin Logged In State -->
+      <div id="adminLoggedInState" class="portal-wrapper d-none">
+        
+        <!-- Mobile Sidebar Drawer Toggle Bar for Admin -->
+        <div class="portal-mobile-toggle-bar" style="background:var(--primary-dark); color:var(--white); border-color:rgba(121,87,255,0.3);">
+          <button class="btn btn-cyan btn-sm" onclick="toggleAdminSidebar()">
+            <i class="fa-solid fa-bars"></i> Admin Menu
+          </button>
+          <span style="font-weight:700; font-size:0.85rem; color:var(--bright-cyan);">
+            <i class="fa-solid fa-shield-halved"></i> Admissions Control
+          </span>
+        </div>
+
+        <!-- Dark Navy Admin Sidebar -->
+        <aside class="portal-sidebar admin-sidebar" id="adminSidebar">
+          <div class="sidebar-profile-card">
+            <div class="sidebar-avatar" style="background:linear-gradient(135deg, var(--electric-violet), #FF796C);"><i class="fa-solid fa-shield-halved"></i></div>
+            <div class="sidebar-user-details">
+              <span class="sidebar-user-name">Admissions Officer</span>
+              <span class="sidebar-user-meta">Admin Control Center</span>
+            </div>
+          </div>
+
+          <ul class="sidebar-nav-list">
+            <li class="sidebar-nav-item">
+              <button class="sidebar-nav-btn active" id="btnNavAdminDashboard" onclick="switchAdminNav('dashboard')">
+                <i class="fa-solid fa-gauge-high"></i> <span>Dashboard</span>
+              </button>
+            </li>
+            <li class="sidebar-nav-item">
+              <button class="sidebar-nav-btn" id="btnNavAdminApplications" onclick="switchAdminNav('applications')">
+                <i class="fa-solid fa-users"></i> <span>Applications Queue</span>
+                <span class="sidebar-badge" id="adminPendingCountBadge">0</span>
+              </button>
+            </li>
+            <li class="sidebar-nav-item">
+              <button class="sidebar-nav-btn" id="btnNavAdminStudents" onclick="switchAdminNav('students')">
+                <i class="fa-solid fa-graduation-cap"></i> <span>Admitted Roster</span>
+              </button>
+            </li>
+            <li class="sidebar-nav-item">
+              <button class="sidebar-nav-btn" id="btnNavAdminPayments" onclick="switchAdminNav('payments')">
+                <i class="fa-solid fa-receipt"></i> <span>Payment Ledger</span>
+              </button>
+            </li>
+            <li class="sidebar-nav-item">
+              <button class="sidebar-nav-btn" id="btnNavAdminNotifications" onclick="switchAdminNav('notifications')">
+                <i class="fa-solid fa-bullhorn"></i> <span>Broadcast Center</span>
+              </button>
+            </li>
+            <li class="sidebar-nav-item" style="margin-top:14px; padding-top:14px; border-top:1px solid rgba(255, 255, 255, 0.1);">
+              <button class="sidebar-nav-btn" style="color:var(--coral);" onclick="logout()">
+                <i class="fa-solid fa-power-off"></i> <span>Admin Logout</span>
+              </button>
+            </li>
+          </ul>
+        </aside>
+
+        <!-- Admin Content Workspace -->
+        <div class="admin-content-area" id="adminContentArea">
+          
+          <!-- Top Header Bar -->
+          <div class="admin-header-card">
+            <div class="admin-header-title">
+              <h2><i class="fa-solid fa-shield-halved" style="color:var(--electric-violet);"></i> Admissions Management Center</h2>
+              <p>Session 2026-27 | Real-time Applicant Queue, Document Verification Studio &amp; Financial Ledger</p>
+            </div>
+            <div style="display:flex; gap:10px; flex-wrap:wrap;">
+              <button class="btn btn-outline btn-sm" onclick="exportDatabaseAsJSON()">
+                <i class="fa-solid fa-file-export"></i> Export JSON
+              </button>
+              <button class="btn btn-outline btn-sm" onclick="exportApplicantsCSV()">
+                <i class="fa-solid fa-file-csv"></i> Export CSV
+              </button>
+            </div>
+          </div>
+
+          <!-- ADMIN TAB 1: DASHBOARD OVERVIEW -->
+          <div id="tabAdminNavDashboard" class="tab-pane active">
+            <!-- Real-Time Metrics Counters -->
+            <div class="admin-stats-grid">
+              <div class="admin-stat-card">
+                <div class="stat-icon-wrapper violet"><i class="fa-solid fa-users"></i></div>
+                <div class="stat-data">
+                  <span class="stat-title">Total Applicants</span>
+                  <span class="stat-number" id="kpiTotalApplicants">0</span>
+                  <span class="stat-subtitle">Registered Candidates</span>
+                </div>
+              </div>
+
+              <div class="admin-stat-card">
+                <div class="stat-icon-wrapper coral"><i class="fa-solid fa-clock-rotate-left"></i></div>
+                <div class="stat-data">
+                  <span class="stat-title">Pending Reviews</span>
+                  <span class="stat-number" id="kpiPendingReviews">0</span>
+                  <span class="stat-subtitle">Awaiting Officer Action</span>
+                </div>
+              </div>
+
+              <div class="admin-stat-card">
+                <div class="stat-icon-wrapper mint"><i class="fa-solid fa-user-check"></i></div>
+                <div class="stat-data">
+                  <span class="stat-title">Approved Seats</span>
+                  <span class="stat-number" id="kpiApprovedSeats">0</span>
+                  <span class="stat-subtitle">Ready to Pay Admission Fee</span>
+                </div>
+              </div>
+
+              <div class="admin-stat-card">
+                <div class="stat-icon-wrapper cyan"><i class="fa-solid fa-indian-rupee-sign"></i></div>
+                <div class="stat-data">
+                  <span class="stat-title">Total Revenue</span>
+                  <span class="stat-number" id="kpiTotalRevenue">₹ 0</span>
+                  <span class="stat-subtitle">Fees Collected</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Application Status Distribution & Recent Overview -->
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:24px;" class="mt-4">
+              <!-- Distribution Bars -->
+              <div class="card-elevated" style="background:var(--white); border-radius:var(--radius-xl); border:1px solid var(--lavender-border); padding:24px;">
+                <h4 style="font-size:1.1rem; font-weight:800; color:var(--primary-dark); margin-bottom:16px;">
+                  <i class="fa-solid fa-chart-pie" style="color:var(--electric-violet);"></i> Application Status Distribution
+                </h4>
+                <div id="adminStatusDistributionGraph" style="display:flex; flex-direction:column; gap:12px;">
+                  <!-- Injected via JS -->
+                </div>
+              </div>
+
+              <!-- Quick Pending Queue -->
+              <div class="card-elevated" style="background:var(--white); border-radius:var(--radius-xl); border:1px solid var(--lavender-border); padding:24px;">
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px;">
+                  <h4 style="font-size:1.1rem; font-weight:800; color:var(--primary-dark);">
+                    <i class="fa-solid fa-user-clock" style="color:var(--coral);"></i> Pending Review Queue
+                  </h4>
+                  <button class="btn btn-outline btn-sm" onclick="switchAdminNav('applications')">View All Queue</button>
+                </div>
+                <div id="adminRecentPendingList" style="display:flex; flex-direction:column; gap:10px;">
+                  <!-- Injected via JS -->
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ADMIN TAB 2: APPLICATIONS QUEUE MASTER TABLE -->
+          <div id="tabAdminNavApplications" class="tab-pane">
+            <div class="admin-table-container">
+              <!-- Search & Filter Toolbar -->
+              <div class="table-toolbar">
+                <div class="table-search-input">
+                  <i class="fa-solid fa-magnifying-glass"></i>
+                  <input type="text" id="adminSearchInput" class="form-control" oninput="renderAdminApplicantsTable()" placeholder="Search candidate, Gmail, ID..." />
+                </div>
+                
+                <div class="table-filter-group">
+                  <select id="adminStatusFilter" onchange="renderAdminApplicantsTable()" class="form-control" style="width:auto;">
+                    <option value="ALL">All Statuses</option>
+                    <option value="UNDER_REVIEW">Pending Review</option>
+                    <option value="APPROVED">Approved (Awaiting Admission Fee)</option>
+                    <option value="ADMITTED">Confirmed Admitted</option>
+                    <option value="RE_UPLOAD_REQUEST">Flagged Docs</option>
+                    <option value="REJECTED">Rejected</option>
+                    <option value="APP_FEE_PENDING">App Fee Due</option>
+                  </select>
+
+                  <select id="adminCourseFilter" onchange="renderAdminApplicantsTable()" class="form-control" style="width:auto;">
+                    <option value="ALL">All Programs</option>
+                    <option value="B.Tech Computer Science & Engineering">B.Tech CSE</option>
+                    <option value="B.Tech Artificial Intelligence & Machine Learning">B.Tech AI &amp; ML</option>
+                    <option value="B.Tech Information Technology">B.Tech IT</option>
+                    <option value="B.Tech Electronics & Communication Engineering">B.Tech ECE</option>
+                    <option value="Bachelor of Computer Applications (BCA)">BCA</option>
+                    <option value="Bachelor of Business Administration (BBA)">BBA</option>
+                    <option value="Master of Computer Applications (MCA)">MCA</option>
+                    <option value="Master of Business Administration (MBA)">MBA</option>
+                  </select>
+                </div>
+              </div>
+
+              <!-- Master Applicants Table -->
+              <div class="table-responsive" style="overflow-x:auto;">
+                <table class="custom-table">
+                  <thead>
+                    <tr>
+                      <th>App ID</th>
+                      <th>Candidate Name &amp; Gmail</th>
+                      <th>Course &amp; Exam Rank</th>
+                      <th>App Fee</th>
+                      <th>Uploaded Docs</th>
+                      <th>Admission Status</th>
+                      <th>Adm Fee</th>
+                      <th class="text-right">Officer Action</th>
+                    </tr>
+                  </thead>
+                  <tbody id="adminApplicantsTableBody">
+                    <!-- Injected via JS -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <!-- ADMIN TAB 3: ADMITTED ROSTER -->
+          <div id="tabAdminNavStudents" class="tab-pane">
+            <div class="admin-table-container">
+              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px;">
+                <div>
+                  <h3 style="font-size:1.3rem; color:var(--primary-dark);"><i class="fa-solid fa-graduation-cap"></i> Confirmed Admitted Students Roster</h3>
+                  <p style="color:var(--muted-text); font-size:0.86rem; margin:0;">Students who have successfully passed document verification and paid the admission fee.</p>
+                </div>
+              </div>
+
+              <div class="table-responsive" style="overflow-x:auto;">
+                <table class="custom-table">
+                  <thead>
+                    <tr>
+                      <th>App ID</th>
+                      <th>Student Name</th>
+                      <th>Contact Email &amp; Phone</th>
+                      <th>Allotted Department</th>
+                      <th>Admission Txn ID</th>
+                      <th>Enrolled Date</th>
+                      <th class="text-right">Letter</th>
+                    </tr>
+                  </thead>
+                  <tbody id="adminAdmittedStudentsTableBody">
+                    <!-- Injected via JS -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <!-- ADMIN TAB 4: CENTRAL PAYMENT LEDGER -->
+          <div id="tabAdminNavPayments" class="tab-pane">
+            <div class="admin-table-container">
+              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px;">
+                <div>
+                  <h3 style="font-size:1.3rem; color:var(--primary-dark);"><i class="fa-solid fa-receipt"></i> Central Fee Payment Ledger</h3>
+                  <p style="color:var(--muted-text); font-size:0.86rem; margin:0;">Real-time payment audit log of application fees and admission fees.</p>
+                </div>
+              </div>
+
+              <div class="table-responsive" style="overflow-x:auto;">
+                <table class="custom-table">
+                  <thead>
+                    <tr>
+                      <th>Txn ID</th>
+                      <th>Timestamp</th>
+                      <th>Candidate</th>
+                      <th>Fee Purpose</th>
+                      <th>Amount</th>
+                      <th>Mode</th>
+                      <th>Status</th>
+                      <th class="text-right">Receipt Slip</th>
+                    </tr>
+                  </thead>
+                  <tbody id="adminTransactionsTableBody">
+                    <!-- Injected via JS -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <!-- ADMIN TAB 5: BROADCAST NOTIFICATIONS CENTER -->
+          <div id="tabAdminNavNotifications" class="tab-pane">
+            <div class="card-elevated" style="background:var(--white); border-radius:var(--radius-xl); border:1px solid var(--lavender-border); padding:30px;">
+              <h3 style="font-size:1.3rem; color:var(--primary-dark); margin-bottom:16px;"><i class="fa-solid fa-bullhorn"></i> Send Campus Broadcast Notification</h3>
+              
+              <form onsubmit="handleSendBroadcastNotification(event)">
+                <div class="form-group mb-4">
+                  <label>Broadcast Title *</label>
+                  <input type="text" id="broadcastTitleInput" class="form-control" placeholder="e.g. Campus Orientation & Document Verification Notice" required />
+                </div>
+                <div class="form-group mb-4">
+                  <label>Notification Message *</label>
+                  <textarea id="broadcastMessageInput" class="form-control" rows="3" placeholder="Enter notification message details..." required></textarea>
+                </div>
+                <div class="form-group mb-4">
+                  <label>Target Audience *</label>
+                  <select id="broadcastTargetAudience" class="form-control">
+                    <option value="ALL">All Registered Candidates</option>
+                    <option value="APPROVED">Approved Candidates Only</option>
+                    <option value="ADMITTED">Confirmed Admitted Students Only</option>
+                  </select>
+                </div>
+                <button type="submit" class="btn btn-primary btn-lg">
+                  <i class="fa-solid fa-paper-plane"></i> Publish Broadcast Notification
+                </button>
+              </form>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ==========================================================================
+       MODAL 1: AUTHENTICATION (STUDENT REGISTER / LOGIN)
+       ========================================================================== -->
+  <div id="authModal" class="modal-backdrop d-none">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <button class="modal-close" onclick="closeAuthModal()">&times;</button>
+        
+        <!-- Register Form View -->
+        <div id="authRegisterView" class="auth-modal-body">
+          <div class="text-center mb-4">
+            <div class="auth-modal-icon" style="width:54px; height:54px; border-radius:50%; background:var(--lavender); color:var(--electric-violet); font-size:1.5rem; display:flex; align-items:center; justify-content:center; margin:0 auto 12px;">
+              <i class="fa-solid fa-user-plus"></i>
+            </div>
+            <h2 class="modal-heading" style="font-size:1.5rem; color:var(--primary-dark);">Student Registration</h2>
+            <p class="modal-sub" style="color:var(--muted-text); font-size:0.88rem;">Create your applicant profile with a valid <strong>@gmail.com</strong> ID.</p>
+          </div>
+
+          <form onsubmit="handleStudentRegister(event)">
+            <div class="form-group mb-2">
+              <label>Candidate Full Name *</label>
+              <input type="text" id="regFullName" class="form-control" placeholder="e.g. Rahul Sharma" maxlength="60" pattern="^[A-Z][a-zA-Z.]*(\s+[A-Z][a-zA-Z.]*)+$" title="First, middle, and last name must each start with a capital letter (e.g. Rahul Sharma)" oninput="onNameFieldInput(this)" onblur="validateNameField(this)" required />
+              <small class="text-muted">First, middle &amp; last name must start with a capital letter (e.g. Rahul Sharma, max 60 chars)</small>
+            </div>
+
+            <div class="form-group mb-2">
+              <label>Gmail Address * <span style="font-size:0.75rem; color:var(--electric-violet); font-weight:700;">Only @gmail.com</span></label>
+              <input type="email" id="regEmail" class="form-control" placeholder="username@gmail.com" oninput="validateGmailField(this)" required />
+              <small class="gmail-feedback" id="regEmailFeedback"></small>
+            </div>
+
+            <div class="form-group mb-2">
+              <label>Mobile Number *</label>
+              <div style="display:flex; gap:6px;">
+                <select id="regCountryCode" class="form-control" style="width:125px; flex-shrink:0;" onchange="handleCountryCodeChange(this, 'regPhone')">
+                  <option value="+91" selected>🇮🇳 +91</option>
+                  <option value="+1">🇺🇸 +1</option>
+                  <option value="+44">🇬🇧 +44</option>
+                  <option value="+971">🇦🇪 +971</option>
+                  <option value="+880">🇧🇩 +880</option>
+                  <option value="+977">🇳🇵 +977</option>
+                  <option value="+65">🇸🇬 +65</option>
+                  <option value="+61">🇦🇺 +61</option>
+                  <option value="+49">🇩🇪 +49</option>
+                  <option value="+966">🇸🇦 +966</option>
+                </select>
+                <input type="tel" id="regPhone" class="form-control" placeholder="Enter mobile number" autocomplete="tel" oninput="formatPhoneInput(this, 'regCountryCode')" required />
+              </div>
+            </div>
+
+            <div class="form-group mb-2">
+              <label>Preferred Course *</label>
+              <select id="regCourse" class="form-control" required>
+                <option value="B.Tech Computer Science & Engineering">B.Tech Computer Science &amp; Engineering</option>
+                <option value="B.Tech Artificial Intelligence & Machine Learning">B.Tech AI &amp; ML (CSE Spec)</option>
+                <option value="B.Tech Information Technology">B.Tech Information Technology</option>
+                <option value="B.Tech Electronics & Communication Engineering">B.Tech Electronics &amp; Communication</option>
+                <option value="Bachelor of Computer Applications (BCA)">Bachelor of Computer Applications (BCA)</option>
+                <option value="Bachelor of Business Administration (BBA)">Bachelor of Business Administration (BBA)</option>
+                <option value="Master of Computer Applications (MCA)">Master of Computer Applications (MCA)</option>
+                <option value="Master of Business Administration (MBA)">Master of Business Administration (MBA)</option>
+              </select>
+            </div>
+
+            <div class="form-group mb-4">
+              <label>Choose Password *</label>
+              <input type="password" id="regPassword" class="form-control" placeholder="At least 6 characters" minlength="6" required />
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-block btn-lg">
+              <i class="fa-solid fa-check"></i> Complete Registration
+            </button>
+          </form>
+
+          <div class="modal-switch-text text-center mt-4" style="font-size:0.88rem; color:var(--muted-text);">
+            Already registered? <a href="javascript:void(0)" onclick="switchAuthModalMode('login')" style="font-weight:700;">Login here</a>
+          </div>
+        </div>
+
+        <!-- Login Form View -->
+        <div id="authLoginView" class="auth-modal-body d-none">
+          <div class="text-center mb-4">
+            <div class="auth-modal-icon" style="width:54px; height:54px; border-radius:50%; background:var(--lavender); color:var(--electric-violet); font-size:1.5rem; display:flex; align-items:center; justify-content:center; margin:0 auto 12px;">
+              <i class="fa-solid fa-right-to-bracket"></i>
+            </div>
+            <h2 class="modal-heading" style="font-size:1.5rem; color:var(--primary-dark);">Applicant Login</h2>
+            <p class="modal-sub" style="color:var(--muted-text); font-size:0.88rem;">Sign in with your registered Gmail address to track your admission.</p>
+          </div>
+
+          <form onsubmit="handleStudentLogin(event)">
+            <div class="form-group mb-4">
+              <label>Registered Gmail ID *</label>
+              <input type="email" id="loginEmail" class="form-control" placeholder="your.name@gmail.com" oninput="validateGmailField(this)" required />
+              <small class="gmail-feedback" id="loginEmailFeedback"></small>
+            </div>
+
+            <div class="form-group mb-4">
+              <label>Password *</label>
+              <input type="password" id="loginPassword" class="form-control" placeholder="Enter password" required />
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-block btn-lg">
+              <i class="fa-solid fa-arrow-right-to-bracket"></i> Sign In to Portal
+            </button>
+          </form>
+
+          <div class="modal-switch-text text-center mt-4" style="font-size:0.88rem; color:var(--muted-text);">
+            New candidate? <a href="javascript:void(0)" onclick="switchAuthModalMode('register')" style="font-weight:700;">Register now</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       MODAL 2: PAYMENT GATEWAY (UPI / Card / NetBanking)
+       ========================================================================== -->
+  <div id="paymentModal" class="modal-backdrop d-none">
+    <div class="modal-dialog modal-payment">
+      <div class="modal-content payment-card">
+        <button class="modal-close" onclick="closePaymentModal()">&times;</button>
+        
+        <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid var(--lavender-border); padding-bottom:16px; margin-bottom:16px;">
+          <div>
+            <span style="font-weight:900; font-size:1.1rem; color:var(--electric-violet); letter-spacing:-0.02em;">IEM SECURE PAY</span>
+            <span style="display:block; font-size:0.75rem; color:var(--mint-green-dark);"><i class="fa-solid fa-lock"></i> 256-Bit SSL Secure Gateway</span>
+          </div>
+          <div style="text-align:right;">
+            <span style="font-size:0.75rem; color:var(--muted-text); display:block;">Payable Amount</span>
+            <span style="font-size:1.4rem; font-weight:900; color:var(--deep-purple);" id="payModalAmount">₹ 1,000.00</span>
+          </div>
+        </div>
+
+        <div style="background:var(--lavender); padding:10px 14px; border-radius:var(--radius-md); font-weight:700; color:var(--deep-purple); font-size:0.9rem; margin-bottom:18px;" id="payModalPurpose">
+          Application Processing Fee
+        </div>
+
+        <!-- Payment Modes Tabs -->
+        <div style="display:grid; grid-template-columns:130px 1fr; gap:16px; margin-bottom:20px;">
+          <div style="display:flex; flex-direction:column; gap:6px;">
+            <button class="pay-nav-btn btn btn-secondary-light btn-sm active" onclick="switchPayMethod('upi')">
+              <i class="fa-solid fa-qrcode"></i> UPI / QR
+            </button>
+            <button class="pay-nav-btn btn btn-secondary-light btn-sm" onclick="switchPayMethod('card')">
+              <i class="fa-regular fa-credit-card"></i> Card
+            </button>
+            <button class="pay-nav-btn btn btn-secondary-light btn-sm" onclick="switchPayMethod('netbanking')">
+              <i class="fa-solid fa-building-columns"></i> Net Banking
+            </button>
+          </div>
+
+          <div>
+            <!-- UPI Tab -->
+            <div id="payTabUpi" class="pay-pane active">
+              <div style="text-align:center; background:var(--warm-off-white); padding:16px; border-radius:var(--radius-lg); border:1px solid var(--lavender-border);">
+                <div class="upi-qr-box">
+                  <div style="width:120px; height:120px; background:linear-gradient(45deg, #11152B 25%, transparent 25%, transparent 75%, #11152B 75%, #11152B), linear-gradient(45deg, #11152B 25%, white 25%, white 75%, #11152B 75%, #11152B); background-size:16px 16px; border-radius:6px;"></div>
+                  <div class="upi-scanner-line"></div>
+                </div>
+                <span style="font-size:0.78rem; color:var(--muted-text); display:block;"><i class="fa-solid fa-qrcode"></i> Simulated Dynamic QR • Scan with GPay / PhonePe / Paytm</span>
+                <div style="margin-top:12px;">
+                  <label style="font-size:0.75rem; color:var(--muted-text); display:block; text-align:left; margin-bottom:4px;">UPI VPA Handle:</label>
+                  <input type="text" class="form-control" id="upiVpaInput" value="candidate@okhdfcbank" style="font-size:0.85rem;" />
+                </div>
+              </div>
+            </div>
+
+            <!-- Card Tab -->
+            <div id="payTabCard" class="pay-pane d-none">
+              <!-- Live Interactive Credit Card Visual -->
+              <div class="interactive-card-preview">
+                <div style="display:flex; justify-content:space-between; align-items:center;">
+                  <div class="card-chip"></div>
+                  <span style="font-weight:900; font-size:1rem; letter-spacing:1px; color:#35D9F5;">IEM KOLKATA</span>
+                </div>
+                <div class="card-number-display" id="cardVisualNumber">4532 •••• •••• 6789</div>
+                <div class="card-bottom-row">
+                  <div>
+                    <span style="display:block; font-size:0.6rem; opacity:0.8;">Cardholder</span>
+                    <span id="cardVisualName" style="font-weight:700;">RAHUL SHARMA</span>
+                  </div>
+                  <div>
+                    <span style="display:block; font-size:0.6rem; opacity:0.8;">Expires</span>
+                    <span id="cardVisualExpiry" style="font-weight:700;">08/29</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group mb-2">
+                <label style="font-size:0.8rem;">Card Number</label>
+                <input type="text" class="form-control" id="payCardNumberInput" value="4532 8901 2345 6789" maxlength="19" oninput="updateCardVisualNumber(this)" />
+              </div>
+              <div class="form-grid-2 mb-2">
+                <div class="form-group">
+                  <label style="font-size:0.8rem;">Expiry Date (MM/YY)</label>
+                  <input type="text" class="form-control" id="payCardExpiryInput" value="08/29" maxlength="5" oninput="updateCardVisualExpiry(this)" />
+                </div>
+                <div class="form-group">
+                  <label style="font-size:0.8rem;">Security Code (CVV)</label>
+                  <input type="password" class="form-control" value="888" maxlength="3" />
+                </div>
+              </div>
+              <div class="form-group">
+                <label style="font-size:0.8rem;">Cardholder Name</label>
+                <input type="text" class="form-control" id="payCardHolderName" value="Rahul Sharma" oninput="updateCardVisualName(this)" />
+              </div>
+            </div>
+
+            <!-- Net Banking Tab -->
+            <div id="payTabNetbanking" class="pay-pane d-none">
+              <label style="font-size:0.82rem; font-weight:700; display:block; margin-bottom:8px;">Select Partner Bank:</label>
+              <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px;">
+                <label style="display:flex; align-items:center; gap:8px; font-size:0.84rem; background:var(--warm-off-white); padding:8px 12px; border-radius:8px; border:1px solid var(--lavender-border); cursor:pointer;">
+                  <input type="radio" name="bank" checked /> State Bank of India
+                </label>
+                <label style="display:flex; align-items:center; gap:8px; font-size:0.84rem; background:var(--warm-off-white); padding:8px 12px; border-radius:8px; border:1px solid var(--lavender-border); cursor:pointer;">
+                  <input type="radio" name="bank" /> HDFC Bank
+                </label>
+                <label style="display:flex; align-items:center; gap:8px; font-size:0.84rem; background:var(--warm-off-white); padding:8px 12px; border-radius:8px; border:1px solid var(--lavender-border); cursor:pointer;">
+                  <input type="radio" name="bank" /> ICICI Bank
+                </label>
+                <label style="display:flex; align-items:center; gap:8px; font-size:0.84rem; background:var(--warm-off-white); padding:8px 12px; border-radius:8px; border:1px solid var(--lavender-border); cursor:pointer;">
+                  <input type="radio" name="bank" /> Axis Bank
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Success Animation Container -->
+        <div id="paySuccessCheckmarkBox" class="d-none text-center" style="padding:20px 0;">
+          <svg class="checkmark-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
+            <circle class="checkmark-circle" cx="26" cy="26" r="25" fill="none"/>
+            <path class="checkmark-check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
+          </svg>
+          <h4 style="color:var(--mint-green-dark); font-size:1.2rem; margin:10px 0 4px;">Payment Confirmed!</h4>
+          <p style="color:var(--muted-text); font-size:0.85rem;" id="paySuccessTxnLabel">Transaction logged into ledger.</p>
+        </div>
+
+        <div class="payment-footer" id="payModalDefaultFooter">
+          <button class="btn btn-success btn-block btn-lg" id="btnExecutePayment" onclick="executeSimulatedPayment()">
+            <i class="fa-solid fa-circle-check"></i> Authorize Payment Now (<span id="payBtnAmountText">₹ 1,000</span>)
+          </button>
+          <p style="text-align:center; font-size:0.75rem; color:var(--muted-text); margin-top:8px;">
+            <i class="fa-solid fa-circle-info"></i> Instant payment processing and digital receipt issuance.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       MODAL 3: ADMIN APPLICANT REVIEW & DOCUMENT VERIFICATION STUDIO
+       ========================================================================== -->
+  <div id="adminReviewModal" class="modal-backdrop d-none">
+    <div class="modal-dialog modal-xl">
+      <div class="modal-content">
+        <button class="modal-close" onclick="closeAdminReviewModal()">&times;</button>
+        
+        <div class="review-modal-header" id="reviewModalHeader" style="margin-bottom:20px; padding-bottom:16px; border-bottom:1px solid var(--lavender-border);">
+          <!-- Injected via JS -->
+        </div>
+
+        <div style="display:grid; grid-template-columns:1.1fr 0.9fr; gap:24px;">
+          <!-- Left Column: Academic & Personal Summary -->
+          <div class="card-elevated" style="background:var(--warm-off-white); border-radius:var(--radius-lg); border:1px solid var(--lavender-border); padding:20px;" id="reviewDetailsCol">
+            <!-- Injected via JS -->
+          </div>
+
+          <!-- Right Column: Document Inspection & Officer Verdict -->
+          <div>
+            <h4 style="font-size:1.05rem; font-weight:800; color:var(--primary-dark); margin-bottom:12px;">
+              <i class="fa-solid fa-folder-open" style="color:var(--electric-violet);"></i> Uploaded Documents Inspection
+            </h4>
+            <div id="adminReviewDocList" style="display:flex; flex-direction:column; gap:8px;">
+              <!-- Injected via JS -->
+            </div>
+
+            <!-- Admin Decision Box -->
+            <div class="card-elevated mt-4" style="background:var(--white); border-radius:var(--radius-lg); border:1px solid var(--lavender-border); padding:20px;">
+              <h4 style="font-size:1rem; font-weight:800; color:var(--primary-dark); margin-bottom:12px;">
+                <i class="fa-solid fa-gavel" style="color:var(--electric-violet);"></i> Admission Officer Verdict
+              </h4>
+              
+              <div class="form-group mb-2">
+                <label>Officer Remarks / Allotment Notes *</label>
+                <textarea id="adminDecisionRemarks" class="form-control" rows="2" placeholder="e.g. Credentials verified. Provisional seat allocated in B.Tech CSE."></textarea>
+              </div>
+
+              <div class="form-group mb-4" id="admissionFeeSetterGroup">
+                <label>Applicable Admission Fee (₹) *</label>
+                <input type="number" id="adminSetAdmissionFee" class="form-control" value="50000" min="10000" max="250000" step="5000" />
+                <small class="text-muted">Student pays this fee upon approval to lock their enrollment.</small>
+              </div>
+
+              <div style="display:flex; gap:8px;">
+                <button class="btn btn-success flex-1" onclick="submitAdminDecision('APPROVED')">
+                  <i class="fa-solid fa-circle-check"></i> Approve
+                </button>
+                <button class="btn btn-warning flex-1" onclick="submitAdminDecision('RE_UPLOAD_REQUEST')">
+                  <i class="fa-solid fa-triangle-exclamation"></i> Flag Docs
+                </button>
+                <button class="btn btn-danger flex-1" onclick="submitAdminDecision('REJECTED')">
+                  <i class="fa-solid fa-circle-xmark"></i> Reject
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       MODAL 4: DOCUMENT PREVIEW LIGHTBOX
+       ========================================================================== -->
+  <div id="docPreviewModal" class="modal-backdrop d-none">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content doc-viewer-modal">
+        <button class="modal-close" onclick="closeDocPreviewModal()">&times;</button>
+        <div style="font-size:1.15rem; font-weight:800; color:var(--primary-dark); margin-bottom:16px;" id="docPreviewTitle">Document Preview</div>
+        <div id="docPreviewBody">
+          <!-- Document preview container -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       MODAL 5: OFFICIAL PRINTABLE PAYMENT RECEIPT VOUCHER
+       ========================================================================== -->
+  <div id="paymentReceiptModal" class="modal-backdrop d-none">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content payment-receipt-modal-content">
+        <button class="modal-close" onclick="closePaymentReceiptModal()">&times;</button>
+        
+        <div class="receipt-action-toolbar no-print" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; margin-bottom:20px; padding-bottom:14px; border-bottom:1px solid var(--lavender-border);">
+          <div>
+            <h3 style="font-size:1.15rem; font-weight:800; color:var(--primary-dark); margin:0;">
+              <i class="fa-solid fa-file-invoice-dollar" style="color:var(--electric-violet);"></i> Official Payment Receipt
+            </h3>
+            <span style="font-size:0.78rem; color:var(--muted-text);">Ready to print or save as PDF</span>
+          </div>
+          <div style="display:flex; gap:10px; align-items:center;">
+            <button type="button" class="btn btn-primary" onclick="printReceiptSlip()">
+              <i class="fa-solid fa-print"></i> Print Official Slip
+            </button>
+            <button type="button" class="btn btn-secondary-light" onclick="closePaymentReceiptModal()">
+              <i class="fa-solid fa-xmark"></i> Close
+            </button>
+          </div>
+        </div>
+
+        <!-- Printable Voucher Card -->
+        <div id="printableReceiptVoucher" class="official-receipt-sheet">
+          <!-- Header -->
+          <div class="receipt-header-banner">
+            <div style="display:flex; align-items:center; gap:16px;">
+              <div class="receipt-crest-box">
+                <span>IEM</span>
+              </div>
+              <div>
+                <h2 class="receipt-college-title">INSTITUTE OF ENGINEERING &amp; MANAGEMENT</h2>
+                <p class="receipt-college-sub">Autonomous Institute • NAAC 'A' Grade Accredited • Approved by AICTE • Affiliated to MAKAUT</p>
+                <p class="receipt-campus-address">Gurukul Campus, Y-12, Block EP, Sector-V, Salt Lake Electronics Complex, Kolkata - 700091, WB</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="receipt-voucher-ribbon">
+            <span>OFFICIAL ELECTRONIC PAYMENT ACKNOWLEDGEMENT SLIP (SESSION 2026-27)</span>
+          </div>
+
+          <!-- Metadata Grid -->
+          <div class="receipt-meta-grid">
+            <div class="receipt-meta-box">
+              <span class="rcpt-label">Receipt / Txn ID:</span>
+              <strong class="rcpt-val" id="rcptTxnId">TXN-APP-2026-001</strong>
+            </div>
+            <div class="receipt-meta-box">
+              <span class="rcpt-label">Payment Date &amp; Time:</span>
+              <span class="rcpt-val" id="rcptDate">10/09/2026, 04:35:52 PM</span>
+            </div>
+            <div class="receipt-meta-box">
+              <span class="rcpt-label">Application ID:</span>
+              <strong class="rcpt-val" id="rcptAppId">IEM-2026-8492</strong>
+            </div>
+            <div class="receipt-meta-box">
+              <span class="rcpt-label">Candidate Name:</span>
+              <strong class="rcpt-val" id="rcptCandidateName">Rahul Sharma</strong>
+            </div>
+            <div class="receipt-meta-box">
+              <span class="rcpt-label">Program / Branch:</span>
+              <span class="rcpt-val" id="rcptCourse">B.Tech Computer Science &amp; Engineering</span>
+            </div>
+            <div class="receipt-meta-box">
+              <span class="rcpt-label">Registered Gmail:</span>
+              <span class="rcpt-val" id="rcptEmail">rahul.iem2026@gmail.com</span>
+            </div>
+            <div class="receipt-meta-box">
+              <span class="rcpt-label">Payment Mode:</span>
+              <span class="rcpt-val" id="rcptMode">UPI / Online Card</span>
+            </div>
+            <div class="receipt-meta-box">
+              <span class="rcpt-label">Transaction Status:</span>
+              <span class="rcpt-badge-paid" id="rcptStatus"><i class="fa-solid fa-circle-check"></i> SUCCESSFUL (CONFIRMED)</span>
+            </div>
+          </div>
+
+          <!-- Line Items Table -->
+          <div class="receipt-table-wrapper">
+            <table class="receipt-table">
+              <thead>
+                <tr>
+                  <th style="width:40px; text-align:center;">#</th>
+                  <th>Fee Head / Particulars</th>
+                  <th style="width:130px; text-align:center;">Academic Period</th>
+                  <th style="width:140px; text-align:right;">Amount Paid</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="text-align:center;">1</td>
+                  <td>
+                    <strong id="rcptParticularsTitle">Application &amp; Registration Processing Fee</strong>
+                    <div style="font-size:0.75rem; color:#64748b;" id="rcptParticularsDesc">Non-refundable institutional admission processing fee</div>
+                  </td>
+                  <td style="text-align:center;">Session 2026-27</td>
+                  <td style="text-align:right; font-weight:700;" id="rcptTableAmount">₹ 1,000.00</td>
+                </tr>
+                <tr class="receipt-subtotal-row">
+                  <td colspan="3" style="text-align:right; font-weight:600;">Bank / Gateway Surcharge:</td>
+                  <td style="text-align:right;">₹ 0.00</td>
+                </tr>
+                <tr class="receipt-total-row">
+                  <td colspan="3" style="text-align:right; font-weight:800; font-size:1.02rem;">Total Net Received (INR):</td>
+                  <td style="text-align:right; font-weight:900; font-size:1.15rem; color:#0f172a;" id="rcptTotalAmount">₹ 1,000.00</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Amount In Words -->
+          <div class="receipt-words-box">
+            <strong>Amount in Words:</strong> <span id="rcptAmountWords">Rupees One Thousand Only</span>
+          </div>
+
+          <!-- Bottom Verification Section -->
+          <div class="receipt-footer-signatures">
+            <div class="receipt-barcode-box">
+              <div class="receipt-barcode-visual">
+                <span>||| | ||||| || |||| |||||| || | |||| ||| ||||</span>
+              </div>
+              <span style="font-size:0.68rem; font-family:monospace; color:#64748b;" id="rcptBarcodeCode">IEM-ACK-2026-SECURE</span>
+            </div>
+
+            <div class="receipt-stamp-box">
+              <div class="digital-stamp-badge">
+                <i class="fa-solid fa-stamp"></i>
+                <span>ACCOUNTS DESK</span>
+                <small>IEM KOLKATA</small>
+              </div>
+            </div>
+
+            <div class="receipt-sign-box">
+              <div class="signature-line"></div>
+              <span style="font-weight:700; font-size:0.82rem; color:#0f172a; display:block;">Finance &amp; Accounts Officer</span>
+              <span style="font-size:0.72rem; color:#64748b;">Institute of Engineering &amp; Management</span>
+            </div>
+          </div>
+
+          <div class="receipt-notice">
+            <p><strong>Important Note:</strong> This is an authentic system-generated e-Receipt issued by IEM Kolkata. Retention of this document is mandatory for physical orientation and university enrollment registration.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       FOOTER (Futuristic Modern Design)
+       ========================================================================== -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-col">
+        <div class="footer-brand">
+          <div class="brand-logo-crest" style="width:36px; height:36px; font-size:0.8rem;"><span class="crest-letter">IEM</span></div>
+          <span class="footer-title">IEM Kolkata</span>
+        </div>
+        <p class="footer-desc">
+          Institute of Engineering &amp; Management (IEM), Kolkata. Autonomous premier institution accredited NAAC 'A' Grade, delivering paperless admission workflows and transparent academic administration.
+        </p>
+        <div class="footer-accreditations">
+          <span class="badge-accreditation">NAAC 'A' Grade</span>
+          <span class="badge-accreditation">NBA Accredited</span>
+          <span class="badge-accreditation">Autonomous</span>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4 class="footer-heading">Academic Programs</h4>
+        <ul class="footer-links">
+          <li><a href="javascript:void(0)" onclick="navigateTo('programs')">B.Tech Computer Science (CSE)</a></li>
+          <li><a href="javascript:void(0)" onclick="navigateTo('programs')">B.Tech Artificial Intelligence &amp; ML</a></li>
+          <li><a href="javascript:void(0)" onclick="navigateTo('programs')">B.Tech Information Technology (IT)</a></li>
+          <li><a href="javascript:void(0)" onclick="navigateTo('programs')">BCA &amp; BBA Programs</a></li>
+          <li><a href="javascript:void(0)" onclick="navigateTo('programs')">MCA &amp; MBA Programs</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4 class="footer-heading">Central Admissions Helpline</h4>
+        <ul class="footer-contact-list">
+          <li><i class="fa-solid fa-phone-volume"></i> <strong>Helpline:</strong> +91 8010700500 / 8069795500</li>
+          <li><i class="fa-solid fa-envelope"></i> admissions@iemcal.com</li>
+          <li><i class="fa-solid fa-building-columns"></i> <strong>Main Campus:</strong> Sector-V, Salt Lake, Kolkata 700091</li>
+          <li><i class="fa-solid fa-globe"></i> www.iem.edu.in</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="footer-bottom-container">
+        <p>&copy; 2026-2027 Institute of Engineering &amp; Management (IEM). All Rights Reserved.</p>
+        <div class="footer-bottom-links">
+          <a href="javascript:void(0)" onclick="navigateTo('process')">Privacy Policy</a>
+          <a href="javascript:void(0)" onclick="navigateTo('process')">Terms of Admission</a>
+          <a href="javascript:void(0)" id="footerLinkAdmin" onclick="navigateTo('admin')">Admin Desk</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Core JavaScript Application Logic -->
+  <script src="app.js?v=3"></script>
+</body>
+</html>
